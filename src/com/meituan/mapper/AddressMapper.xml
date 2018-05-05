@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.mapper.AddressMapper" >
+  <resultMap id="BaseResultMap" type="com.meituan.pojo.Address" >
+    <id column="ad_id" property="adId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+    <result column="ad_phone" property="adPhone" jdbcType="VARCHAR" />
+    <result column="ad_province" property="adProvince" jdbcType="VARCHAR" />
+    <result column="ad_city" property="adCity" jdbcType="VARCHAR" />
+    <result column="ad_school" property="adSchool" jdbcType="VARCHAR" />
+    <result column="ad_address" property="adAddress" jdbcType="VARCHAR" />
+    <result column="ad_flag" property="adFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ad_id, u_id, ad_name, ad_phone, ad_province, ad_city, ad_school, ad_address, ad_flag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.AddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where ad_id = #{adId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from address
+    where ad_id = #{adId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meituan.pojo.AddressExample" >
+    delete from address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meituan.pojo.Address" >
+    insert into address (ad_id, u_id, ad_name, 
+      ad_phone, ad_province, ad_city, 
+      ad_school, ad_address, ad_flag
+      )
+    values (#{adId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{adName,jdbcType=VARCHAR}, 
+      #{adPhone,jdbcType=VARCHAR}, #{adProvince,jdbcType=VARCHAR}, #{adCity,jdbcType=VARCHAR}, 
+      #{adSchool,jdbcType=VARCHAR}, #{adAddress,jdbcType=VARCHAR}, #{adFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.meituan.pojo.Address" >
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        ad_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="adName != null" >
+        ad_name,
+      </if>
+      <if test="adPhone != null" >
+        ad_phone,
+      </if>
+      <if test="adProvince != null" >
+        ad_province,
+      </if>
+      <if test="adCity != null" >
+        ad_city,
+      </if>
+      <if test="adSchool != null" >
+        ad_school,
+      </if>
+      <if test="adAddress != null" >
+        ad_address,
+      </if>
+      <if test="adFlag != null" >
+        ad_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        #{adId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adPhone != null" >
+        #{adPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adProvince != null" >
+        #{adProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="adCity != null" >
+        #{adCity,jdbcType=VARCHAR},
+      </if>
+      <if test="adSchool != null" >
+        #{adSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="adAddress != null" >
+        #{adAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="adFlag != null" >
+        #{adFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meituan.pojo.AddressExample" resultType="java.lang.Integer" >
+    select count(*) from address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update address
+    <set >
+      <if test="record.adId != null" >
+        ad_id = #{record.adId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adName != null" >
+        ad_name = #{record.adName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adPhone != null" >
+        ad_phone = #{record.adPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adProvince != null" >
+        ad_province = #{record.adProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adCity != null" >
+        ad_city = #{record.adCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adSchool != null" >
+        ad_school = #{record.adSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adAddress != null" >
+        ad_address = #{record.adAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adFlag != null" >
+        ad_flag = #{record.adFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update address
+    set ad_id = #{record.adId,jdbcType=VARCHAR},
+      u_id = #{record.uId,jdbcType=VARCHAR},
+      ad_name = #{record.adName,jdbcType=VARCHAR},
+      ad_phone = #{record.adPhone,jdbcType=VARCHAR},
+      ad_province = #{record.adProvince,jdbcType=VARCHAR},
+      ad_city = #{record.adCity,jdbcType=VARCHAR},
+      ad_school = #{record.adSchool,jdbcType=VARCHAR},
+      ad_address = #{record.adAddress,jdbcType=VARCHAR},
+      ad_flag = #{record.adFlag,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Address" >
+    update address
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="adName != null" >
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adPhone != null" >
+        ad_phone = #{adPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="adProvince != null" >
+        ad_province = #{adProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="adCity != null" >
+        ad_city = #{adCity,jdbcType=VARCHAR},
+      </if>
+      <if test="adSchool != null" >
+        ad_school = #{adSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="adAddress != null" >
+        ad_address = #{adAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="adFlag != null" >
+        ad_flag = #{adFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ad_id = #{adId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Address" >
+    update address
+    set u_id = #{uId,jdbcType=VARCHAR},
+      ad_name = #{adName,jdbcType=VARCHAR},
+      ad_phone = #{adPhone,jdbcType=VARCHAR},
+      ad_province = #{adProvince,jdbcType=VARCHAR},
+      ad_city = #{adCity,jdbcType=VARCHAR},
+      ad_school = #{adSchool,jdbcType=VARCHAR},
+      ad_address = #{adAddress,jdbcType=VARCHAR},
+      ad_flag = #{adFlag,jdbcType=INTEGER}
+    where ad_id = #{adId,jdbcType=VARCHAR}
+  </update>
+</mapper>

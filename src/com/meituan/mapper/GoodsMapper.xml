@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.mapper.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.meituan.pojo.Goods" >
+    <id column="g_id" property="gId" jdbcType="VARCHAR" />
+    <result column="b_id" property="bId" jdbcType="VARCHAR" />
+    <result column="g_name" property="gName" jdbcType="VARCHAR" />
+    <result column="g_detail" property="gDetail" jdbcType="VARCHAR" />
+    <result column="g_type" property="gType" jdbcType="VARCHAR" />
+    <result column="g_price" property="gPrice" jdbcType="DOUBLE" />
+    <result column="g_stock" property="gStock" jdbcType="INTEGER" />
+    <result column="g_picture" property="gPicture" jdbcType="VARCHAR" />
+    <result column="g_sale" property="gSale" jdbcType="INTEGER" />
+    <result column="g_add" property="gAdd" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    g_id, b_id, g_name, g_detail, g_type, g_price, g_stock, g_picture, g_sale, g_add
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.GoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from goods
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meituan.pojo.GoodsExample" >
+    delete from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meituan.pojo.Goods" >
+    insert into goods (g_id, b_id, g_name, 
+      g_detail, g_type, g_price, 
+      g_stock, g_picture, g_sale, 
+      g_add)
+    values (#{gId,jdbcType=VARCHAR}, #{bId,jdbcType=VARCHAR}, #{gName,jdbcType=VARCHAR}, 
+      #{gDetail,jdbcType=VARCHAR}, #{gType,jdbcType=VARCHAR}, #{gPrice,jdbcType=DOUBLE}, 
+      #{gStock,jdbcType=INTEGER}, #{gPicture,jdbcType=VARCHAR}, #{gSale,jdbcType=INTEGER}, 
+      #{gAdd,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meituan.pojo.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        g_id,
+      </if>
+      <if test="bId != null" >
+        b_id,
+      </if>
+      <if test="gName != null" >
+        g_name,
+      </if>
+      <if test="gDetail != null" >
+        g_detail,
+      </if>
+      <if test="gType != null" >
+        g_type,
+      </if>
+      <if test="gPrice != null" >
+        g_price,
+      </if>
+      <if test="gStock != null" >
+        g_stock,
+      </if>
+      <if test="gPicture != null" >
+        g_picture,
+      </if>
+      <if test="gSale != null" >
+        g_sale,
+      </if>
+      <if test="gAdd != null" >
+        g_add,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        #{gId,jdbcType=VARCHAR},
+      </if>
+      <if test="bId != null" >
+        #{bId,jdbcType=VARCHAR},
+      </if>
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gDetail != null" >
+        #{gDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gType != null" >
+        #{gType,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null" >
+        #{gPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gStock != null" >
+        #{gStock,jdbcType=INTEGER},
+      </if>
+      <if test="gPicture != null" >
+        #{gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="gSale != null" >
+        #{gSale,jdbcType=INTEGER},
+      </if>
+      <if test="gAdd != null" >
+        #{gAdd,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meituan.pojo.GoodsExample" resultType="java.lang.Integer" >
+    select count(*) from goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update goods
+    <set >
+      <if test="record.gId != null" >
+        g_id = #{record.gId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bId != null" >
+        b_id = #{record.bId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gName != null" >
+        g_name = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gDetail != null" >
+        g_detail = #{record.gDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gType != null" >
+        g_type = #{record.gType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gPrice != null" >
+        g_price = #{record.gPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gStock != null" >
+        g_stock = #{record.gStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.gPicture != null" >
+        g_picture = #{record.gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gSale != null" >
+        g_sale = #{record.gSale,jdbcType=INTEGER},
+      </if>
+      <if test="record.gAdd != null" >
+        g_add = #{record.gAdd,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update goods
+    set g_id = #{record.gId,jdbcType=VARCHAR},
+      b_id = #{record.bId,jdbcType=VARCHAR},
+      g_name = #{record.gName,jdbcType=VARCHAR},
+      g_detail = #{record.gDetail,jdbcType=VARCHAR},
+      g_type = #{record.gType,jdbcType=VARCHAR},
+      g_price = #{record.gPrice,jdbcType=DOUBLE},
+      g_stock = #{record.gStock,jdbcType=INTEGER},
+      g_picture = #{record.gPicture,jdbcType=VARCHAR},
+      g_sale = #{record.gSale,jdbcType=INTEGER},
+      g_add = #{record.gAdd,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Goods" >
+    update goods
+    <set >
+      <if test="bId != null" >
+        b_id = #{bId,jdbcType=VARCHAR},
+      </if>
+      <if test="gName != null" >
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gDetail != null" >
+        g_detail = #{gDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gType != null" >
+        g_type = #{gType,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null" >
+        g_price = #{gPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gStock != null" >
+        g_stock = #{gStock,jdbcType=INTEGER},
+      </if>
+      <if test="gPicture != null" >
+        g_picture = #{gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="gSale != null" >
+        g_sale = #{gSale,jdbcType=INTEGER},
+      </if>
+      <if test="gAdd != null" >
+        g_add = #{gAdd,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Goods" >
+    update goods
+    set b_id = #{bId,jdbcType=VARCHAR},
+      g_name = #{gName,jdbcType=VARCHAR},
+      g_detail = #{gDetail,jdbcType=VARCHAR},
+      g_type = #{gType,jdbcType=VARCHAR},
+      g_price = #{gPrice,jdbcType=DOUBLE},
+      g_stock = #{gStock,jdbcType=INTEGER},
+      g_picture = #{gPicture,jdbcType=VARCHAR},
+      g_sale = #{gSale,jdbcType=INTEGER},
+      g_add = #{gAdd,jdbcType=TIMESTAMP}
+    where g_id = #{gId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.mapper.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.meituan.pojo.Feedback" >
+    <id column="f_id" property="fId" jdbcType="VARCHAR" />
+    <result column="f_receiveId" property="fReceiveid" jdbcType="VARCHAR" />
+    <result column="f_time" property="fTime" jdbcType="TIMESTAMP" />
+    <result column="f_content" property="fContent" jdbcType="VARCHAR" />
+    <result column="f_readed" property="fReaded" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    f_id, f_receiveId, f_time, f_content, f_readed
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.FeedbackExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from feedback
+    where f_id = #{fId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from feedback
+    where f_id = #{fId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meituan.pojo.FeedbackExample" >
+    delete from feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meituan.pojo.Feedback" >
+    insert into feedback (f_id, f_receiveId, f_time, 
+      f_content, f_readed)
+    values (#{fId,jdbcType=VARCHAR}, #{fReceiveid,jdbcType=VARCHAR}, #{fTime,jdbcType=TIMESTAMP}, 
+      #{fContent,jdbcType=VARCHAR}, #{fReaded,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meituan.pojo.Feedback" >
+    insert into feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="fReceiveid != null" >
+        f_receiveId,
+      </if>
+      <if test="fTime != null" >
+        f_time,
+      </if>
+      <if test="fContent != null" >
+        f_content,
+      </if>
+      <if test="fReaded != null" >
+        f_readed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=VARCHAR},
+      </if>
+      <if test="fReceiveid != null" >
+        #{fReceiveid,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fContent != null" >
+        #{fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fReaded != null" >
+        #{fReaded,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meituan.pojo.FeedbackExample" resultType="java.lang.Integer" >
+    select count(*) from feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update feedback
+    <set >
+      <if test="record.fId != null" >
+        f_id = #{record.fId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fReceiveid != null" >
+        f_receiveId = #{record.fReceiveid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fTime != null" >
+        f_time = #{record.fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fContent != null" >
+        f_content = #{record.fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fReaded != null" >
+        f_readed = #{record.fReaded,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update feedback
+    set f_id = #{record.fId,jdbcType=VARCHAR},
+      f_receiveId = #{record.fReceiveid,jdbcType=VARCHAR},
+      f_time = #{record.fTime,jdbcType=TIMESTAMP},
+      f_content = #{record.fContent,jdbcType=VARCHAR},
+      f_readed = #{record.fReaded,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Feedback" >
+    update feedback
+    <set >
+      <if test="fReceiveid != null" >
+        f_receiveId = #{fReceiveid,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        f_time = #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fContent != null" >
+        f_content = #{fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fReaded != null" >
+        f_readed = #{fReaded,jdbcType=INTEGER},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Feedback" >
+    update feedback
+    set f_receiveId = #{fReceiveid,jdbcType=VARCHAR},
+      f_time = #{fTime,jdbcType=TIMESTAMP},
+      f_content = #{fContent,jdbcType=VARCHAR},
+      f_readed = #{fReaded,jdbcType=INTEGER}
+    where f_id = #{fId,jdbcType=VARCHAR}
+  </update>
+</mapper>
