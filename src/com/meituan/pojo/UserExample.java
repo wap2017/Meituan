@@ -384,73 +384,73 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolIsNull() {
-            addCriterion("u_school is null");
+        public Criteria andUAddressIsNull() {
+            addCriterion("u_address is null");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolIsNotNull() {
-            addCriterion("u_school is not null");
+        public Criteria andUAddressIsNotNull() {
+            addCriterion("u_address is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolEqualTo(String value) {
-            addCriterion("u_school =", value, "uSchool");
+        public Criteria andUAddressEqualTo(String value) {
+            addCriterion("u_address =", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolNotEqualTo(String value) {
-            addCriterion("u_school <>", value, "uSchool");
+        public Criteria andUAddressNotEqualTo(String value) {
+            addCriterion("u_address <>", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolGreaterThan(String value) {
-            addCriterion("u_school >", value, "uSchool");
+        public Criteria andUAddressGreaterThan(String value) {
+            addCriterion("u_address >", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolGreaterThanOrEqualTo(String value) {
-            addCriterion("u_school >=", value, "uSchool");
+        public Criteria andUAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("u_address >=", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolLessThan(String value) {
-            addCriterion("u_school <", value, "uSchool");
+        public Criteria andUAddressLessThan(String value) {
+            addCriterion("u_address <", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolLessThanOrEqualTo(String value) {
-            addCriterion("u_school <=", value, "uSchool");
+        public Criteria andUAddressLessThanOrEqualTo(String value) {
+            addCriterion("u_address <=", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolLike(String value) {
-            addCriterion("u_school like", value, "uSchool");
+        public Criteria andUAddressLike(String value) {
+            addCriterion("u_address like", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolNotLike(String value) {
-            addCriterion("u_school not like", value, "uSchool");
+        public Criteria andUAddressNotLike(String value) {
+            addCriterion("u_address not like", value, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolIn(List<String> values) {
-            addCriterion("u_school in", values, "uSchool");
+        public Criteria andUAddressIn(List<String> values) {
+            addCriterion("u_address in", values, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolNotIn(List<String> values) {
-            addCriterion("u_school not in", values, "uSchool");
+        public Criteria andUAddressNotIn(List<String> values) {
+            addCriterion("u_address not in", values, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolBetween(String value1, String value2) {
-            addCriterion("u_school between", value1, value2, "uSchool");
+        public Criteria andUAddressBetween(String value1, String value2) {
+            addCriterion("u_address between", value1, value2, "uAddress");
             return (Criteria) this;
         }
 
-        public Criteria andUSchoolNotBetween(String value1, String value2) {
-            addCriterion("u_school not between", value1, value2, "uSchool");
+        public Criteria andUAddressNotBetween(String value1, String value2) {
+            addCriterion("u_address not between", value1, value2, "uAddress");
             return (Criteria) this;
         }
 

@@ -1,7 +1,7 @@
 package com.meituan.pojo;
 
 public class User {
-    private String uId;
+    private Integer uId;
 
     private String uPicture;
 
@@ -9,16 +9,17 @@ public class User {
 
     private String uSex;
 
-    private String uSchool;
+    private String uAddress;
 
     private Integer uIsban;
+    
 
-    public String getuId() {
+    public Integer getuId() {
         return uId;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId == null ? null : uId.trim();
+    public void setuId(Integer uId) {
+        this.uId = uId;
     }
 
     public String getuPicture() {
@@ -45,12 +46,12 @@ public class User {
         this.uSex = uSex == null ? null : uSex.trim();
     }
 
-    public String getuSchool() {
-        return uSchool;
+    public String getuAddress() {
+        return uAddress;
     }
 
-    public void setuSchool(String uSchool) {
-        this.uSchool = uSchool == null ? null : uSchool.trim();
+    public void setuAddress(String uAddress) {
+        this.uAddress = uAddress == null ? null : uAddress.trim();
     }
 
     public Integer getuIsban() {

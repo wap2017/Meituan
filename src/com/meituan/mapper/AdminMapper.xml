@@ -3,7 +3,7 @@
 <mapper namespace="com.meituan.mapper.AdminMapper" >
   <resultMap id="BaseResultMap" type="com.meituan.pojo.Admin" >
     <id column="a_id" property="aId" jdbcType="VARCHAR" />
-    <result column="a_number" property="aNumber" jdbcType="VARCHAR" />
+    <result column="a_account" property="aAccount" jdbcType="VARCHAR" />
     <result column="a_pwd" property="aPwd" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    a_id, a_number, a_pwd
+    a_id, a_account, a_pwd
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.AdminExample" >
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.meituan.pojo.Admin" >
-    insert into admin (a_id, a_number, a_pwd
+    insert into admin (a_id, a_account, a_pwd
       )
-    values (#{aId,jdbcType=VARCHAR}, #{aNumber,jdbcType=VARCHAR}, #{aPwd,jdbcType=VARCHAR}
+    values (#{aId,jdbcType=VARCHAR}, #{aAccount,jdbcType=VARCHAR}, #{aPwd,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.meituan.pojo.Admin" >
@@ -109,8 +109,8 @@
       <if test="aId != null" >
         a_id,
       </if>
-      <if test="aNumber != null" >
-        a_number,
+      <if test="aAccount != null" >
+        a_account,
       </if>
       <if test="aPwd != null" >
         a_pwd,
@@ -120,8 +120,8 @@
       <if test="aId != null" >
         #{aId,jdbcType=VARCHAR},
       </if>
-      <if test="aNumber != null" >
-        #{aNumber,jdbcType=VARCHAR},
+      <if test="aAccount != null" >
+        #{aAccount,jdbcType=VARCHAR},
       </if>
       <if test="aPwd != null" >
         #{aPwd,jdbcType=VARCHAR},
@@ -140,8 +140,8 @@
       <if test="record.aId != null" >
         a_id = #{record.aId,jdbcType=VARCHAR},
       </if>
-      <if test="record.aNumber != null" >
-        a_number = #{record.aNumber,jdbcType=VARCHAR},
+      <if test="record.aAccount != null" >
+        a_account = #{record.aAccount,jdbcType=VARCHAR},
       </if>
       <if test="record.aPwd != null" >
         a_pwd = #{record.aPwd,jdbcType=VARCHAR},
@@ -154,7 +154,7 @@
   <update id="updateByExample" parameterType="map" >
     update admin
     set a_id = #{record.aId,jdbcType=VARCHAR},
-      a_number = #{record.aNumber,jdbcType=VARCHAR},
+      a_account = #{record.aAccount,jdbcType=VARCHAR},
       a_pwd = #{record.aPwd,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -163,8 +163,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Admin" >
     update admin
     <set >
-      <if test="aNumber != null" >
-        a_number = #{aNumber,jdbcType=VARCHAR},
+      <if test="aAccount != null" >
+        a_account = #{aAccount,jdbcType=VARCHAR},
       </if>
       <if test="aPwd != null" >
         a_pwd = #{aPwd,jdbcType=VARCHAR},
@@ -174,7 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Admin" >
     update admin
-    set a_number = #{aNumber,jdbcType=VARCHAR},
+    set a_account = #{aAccount,jdbcType=VARCHAR},
       a_pwd = #{aPwd,jdbcType=VARCHAR}
     where a_id = #{aId,jdbcType=VARCHAR}
   </update>

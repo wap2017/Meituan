@@ -174,73 +174,73 @@ public class BussinessExample {
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNull() {
-            addCriterion("s_id is null");
+        public Criteria andBAddressIsNull() {
+            addCriterion("b_address is null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNotNull() {
-            addCriterion("s_id is not null");
+        public Criteria andBAddressIsNotNull() {
+            addCriterion("b_address is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdEqualTo(String value) {
-            addCriterion("s_id =", value, "sId");
+        public Criteria andBAddressEqualTo(String value) {
+            addCriterion("b_address =", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotEqualTo(String value) {
-            addCriterion("s_id <>", value, "sId");
+        public Criteria andBAddressNotEqualTo(String value) {
+            addCriterion("b_address <>", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThan(String value) {
-            addCriterion("s_id >", value, "sId");
+        public Criteria andBAddressGreaterThan(String value) {
+            addCriterion("b_address >", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThanOrEqualTo(String value) {
-            addCriterion("s_id >=", value, "sId");
+        public Criteria andBAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("b_address >=", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThan(String value) {
-            addCriterion("s_id <", value, "sId");
+        public Criteria andBAddressLessThan(String value) {
+            addCriterion("b_address <", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThanOrEqualTo(String value) {
-            addCriterion("s_id <=", value, "sId");
+        public Criteria andBAddressLessThanOrEqualTo(String value) {
+            addCriterion("b_address <=", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLike(String value) {
-            addCriterion("s_id like", value, "sId");
+        public Criteria andBAddressLike(String value) {
+            addCriterion("b_address like", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotLike(String value) {
-            addCriterion("s_id not like", value, "sId");
+        public Criteria andBAddressNotLike(String value) {
+            addCriterion("b_address not like", value, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIn(List<String> values) {
-            addCriterion("s_id in", values, "sId");
+        public Criteria andBAddressIn(List<String> values) {
+            addCriterion("b_address in", values, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotIn(List<String> values) {
-            addCriterion("s_id not in", values, "sId");
+        public Criteria andBAddressNotIn(List<String> values) {
+            addCriterion("b_address not in", values, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdBetween(String value1, String value2) {
-            addCriterion("s_id between", value1, value2, "sId");
+        public Criteria andBAddressBetween(String value1, String value2) {
+            addCriterion("b_address between", value1, value2, "bAddress");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotBetween(String value1, String value2) {
-            addCriterion("s_id not between", value1, value2, "sId");
+        public Criteria andBAddressNotBetween(String value1, String value2) {
+            addCriterion("b_address not between", value1, value2, "bAddress");
             return (Criteria) this;
         }
 

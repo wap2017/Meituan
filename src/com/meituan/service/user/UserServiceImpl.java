@@ -20,6 +20,12 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
+	public int registerUser(User user)
+	{
+		return userMapper.insert(user);
+	}
+	
+	@Override
 	public User findUserById(String id) {
 		User user = userMapper.selectByPrimaryKey(id);
 		return user;

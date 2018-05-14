@@ -3,7 +3,7 @@ package com.meituan.pojo;
 public class Bussiness {
     private String bId;
 
-    private String sId;
+    private String bAddress;
 
     private String bShopname;
 
@@ -21,12 +21,12 @@ public class Bussiness {
         this.bId = bId == null ? null : bId.trim();
     }
 
-    public String getsId() {
-        return sId;
+    public String getbAddress() {
+        return bAddress;
     }
 
-    public void setsId(String sId) {
-        this.sId = sId == null ? null : sId.trim();
+    public void setbAddress(String bAddress) {
+        this.bAddress = bAddress == null ? null : bAddress.trim();
     }
 
     public String getbShopname() {

@@ -13,8 +13,6 @@ public class Address {
 
     private String adCity;
 
-    private String adSchool;
-
     private String adAddress;
 
     private Integer adFlag;
@@ -65,14 +63,6 @@ public class Address {
 
     public void setAdCity(String adCity) {
         this.adCity = adCity == null ? null : adCity.trim();
-    }
-
-    public String getAdSchool() {
-        return adSchool;
-    }
-
-    public void setAdSchool(String adSchool) {
-        this.adSchool = adSchool == null ? null : adSchool.trim();
     }
 
     public String getAdAddress() {

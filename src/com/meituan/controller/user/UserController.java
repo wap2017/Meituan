@@ -18,6 +18,20 @@ public class UserController {
 
 	@Resource(name = "UserService")
 	private UserService userService;
+	
+	@RequestMapping("/register")
+	public String register(Model model,String uPicture,String uNickname,String uSex,String uAddress,Integer uIsban) {
+		//http:localhost/Meituan/user/register?uId=3&uPicture=AAA.JPG&uNickname=小刘&uSex=男&uAddress=北京&uIsban=1
+		User u=new User();
+		u.setuPicture(uPicture);
+		u.setuNickname(uNickname);
+		u.setuSex(uSex);
+		u.setuAddress(uAddress);
+		u.setuIsban(uIsban);
+		userService.registerUser(u);
+		return "list";
+	}
+	
 
 	@RequestMapping("/list")
 	public String toList() {
@@ -39,15 +53,7 @@ public class UserController {
 		System.out.println(curPage);
 		System.out.println(pageSize);
 		PageInfo<User> result = userService.findUsers(curPage, pageSize);
-		// model.addAttribute("result", result);
-		// return result;
 		return result;
-
-		// System.out.println(model);
-		// PageInfo<User> pi=new PageInfo<User>(users);
-		// model.addAttribute("pi",pi);
-		// //return pi;
-		// return "list";
 	}
 
 }

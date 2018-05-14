@@ -6,7 +6,7 @@
     <result column="u_picture" property="uPicture" jdbcType="VARCHAR" />
     <result column="u_nickName" property="uNickname" jdbcType="VARCHAR" />
     <result column="u_sex" property="uSex" jdbcType="VARCHAR" />
-    <result column="u_school" property="uSchool" jdbcType="VARCHAR" />
+    <result column="u_address" property="uAddress" jdbcType="VARCHAR" />
     <result column="u_isBan" property="uIsban" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    u_id, u_picture, u_nickName, u_sex, u_school, u_isBan
+    u_id, u_picture, u_nickName, u_sex, u_address, u_isBan
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.UserExample" >
     select
@@ -102,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.meituan.pojo.User" >
     insert into user (u_id, u_picture, u_nickName, 
-      u_sex, u_school, u_isBan
+      u_sex, u_address, u_isBan
       )
     values (#{uId,jdbcType=VARCHAR}, #{uPicture,jdbcType=VARCHAR}, #{uNickname,jdbcType=VARCHAR}, 
-      #{uSex,jdbcType=VARCHAR}, #{uSchool,jdbcType=VARCHAR}, #{uIsban,jdbcType=INTEGER}
+      #{uSex,jdbcType=VARCHAR}, #{uAddress,jdbcType=VARCHAR}, #{uIsban,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.meituan.pojo.User" >
@@ -123,8 +123,8 @@
       <if test="uSex != null" >
         u_sex,
       </if>
-      <if test="uSchool != null" >
-        u_school,
+      <if test="uAddress != null" >
+        u_address,
       </if>
       <if test="uIsban != null" >
         u_isBan,
@@ -143,8 +143,8 @@
       <if test="uSex != null" >
         #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="uSchool != null" >
-        #{uSchool,jdbcType=VARCHAR},
+      <if test="uAddress != null" >
+        #{uAddress,jdbcType=VARCHAR},
       </if>
       <if test="uIsban != null" >
         #{uIsban,jdbcType=INTEGER},
@@ -172,8 +172,8 @@
       <if test="record.uSex != null" >
         u_sex = #{record.uSex,jdbcType=VARCHAR},
       </if>
-      <if test="record.uSchool != null" >
-        u_school = #{record.uSchool,jdbcType=VARCHAR},
+      <if test="record.uAddress != null" >
+        u_address = #{record.uAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.uIsban != null" >
         u_isBan = #{record.uIsban,jdbcType=INTEGER},
@@ -189,7 +189,7 @@
       u_picture = #{record.uPicture,jdbcType=VARCHAR},
       u_nickName = #{record.uNickname,jdbcType=VARCHAR},
       u_sex = #{record.uSex,jdbcType=VARCHAR},
-      u_school = #{record.uSchool,jdbcType=VARCHAR},
+      u_address = #{record.uAddress,jdbcType=VARCHAR},
       u_isBan = #{record.uIsban,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -207,8 +207,8 @@
       <if test="uSex != null" >
         u_sex = #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="uSchool != null" >
-        u_school = #{uSchool,jdbcType=VARCHAR},
+      <if test="uAddress != null" >
+        u_address = #{uAddress,jdbcType=VARCHAR},
       </if>
       <if test="uIsban != null" >
         u_isBan = #{uIsban,jdbcType=INTEGER},
@@ -221,7 +221,7 @@
     set u_picture = #{uPicture,jdbcType=VARCHAR},
       u_nickName = #{uNickname,jdbcType=VARCHAR},
       u_sex = #{uSex,jdbcType=VARCHAR},
-      u_school = #{uSchool,jdbcType=VARCHAR},
+      u_address = #{uAddress,jdbcType=VARCHAR},
       u_isBan = #{uIsban,jdbcType=INTEGER}
     where u_id = #{uId,jdbcType=VARCHAR}
   </update>

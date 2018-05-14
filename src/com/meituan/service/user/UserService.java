@@ -11,6 +11,8 @@ public interface UserService {
 	User findUserById(String id);
 
 	PageInfo<User> findUsers(int curPage,int pageSize);
+
+	int registerUser(User user);
 	
 
 }

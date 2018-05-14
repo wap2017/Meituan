@@ -3,7 +3,7 @@
 <mapper namespace="com.meituan.mapper.BussinessMapper" >
   <resultMap id="BaseResultMap" type="com.meituan.pojo.Bussiness" >
     <id column="b_id" property="bId" jdbcType="VARCHAR" />
-    <result column="s_id" property="sId" jdbcType="VARCHAR" />
+    <result column="b_address" property="bAddress" jdbcType="VARCHAR" />
     <result column="b_shopName" property="bShopname" jdbcType="VARCHAR" />
     <result column="b_shopLogo" property="bShoplogo" jdbcType="VARCHAR" />
     <result column="b_notice" property="bNotice" jdbcType="VARCHAR" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    b_id, s_id, b_shopName, b_shopLogo, b_notice, b_isBan
+    b_id, b_address, b_shopName, b_shopLogo, b_notice, b_isBan
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.BussinessExample" >
     select
@@ -101,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.meituan.pojo.Bussiness" >
-    insert into bussiness (b_id, s_id, b_shopName, 
+    insert into bussiness (b_id, b_address, b_shopName, 
       b_shopLogo, b_notice, b_isBan
       )
-    values (#{bId,jdbcType=VARCHAR}, #{sId,jdbcType=VARCHAR}, #{bShopname,jdbcType=VARCHAR}, 
+    values (#{bId,jdbcType=VARCHAR}, #{bAddress,jdbcType=VARCHAR}, #{bShopname,jdbcType=VARCHAR}, 
       #{bShoplogo,jdbcType=VARCHAR}, #{bNotice,jdbcType=VARCHAR}, #{bIsban,jdbcType=INTEGER}
       )
   </insert>
@@ -114,8 +114,8 @@
       <if test="bId != null" >
         b_id,
       </if>
-      <if test="sId != null" >
-        s_id,
+      <if test="bAddress != null" >
+        b_address,
       </if>
       <if test="bShopname != null" >
         b_shopName,
@@ -134,8 +134,8 @@
       <if test="bId != null" >
         #{bId,jdbcType=VARCHAR},
       </if>
-      <if test="sId != null" >
-        #{sId,jdbcType=VARCHAR},
+      <if test="bAddress != null" >
+        #{bAddress,jdbcType=VARCHAR},
       </if>
       <if test="bShopname != null" >
         #{bShopname,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
       <if test="record.bId != null" >
         b_id = #{record.bId,jdbcType=VARCHAR},
       </if>
-      <if test="record.sId != null" >
-        s_id = #{record.sId,jdbcType=VARCHAR},
+      <if test="record.bAddress != null" >
+        b_address = #{record.bAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.bShopname != null" >
         b_shopName = #{record.bShopname,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   <update id="updateByExample" parameterType="map" >
     update bussiness
     set b_id = #{record.bId,jdbcType=VARCHAR},
-      s_id = #{record.sId,jdbcType=VARCHAR},
+      b_address = #{record.bAddress,jdbcType=VARCHAR},
       b_shopName = #{record.bShopname,jdbcType=VARCHAR},
       b_shopLogo = #{record.bShoplogo,jdbcType=VARCHAR},
       b_notice = #{record.bNotice,jdbcType=VARCHAR},
@@ -198,8 +198,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Bussiness" >
     update bussiness
     <set >
-      <if test="sId != null" >
-        s_id = #{sId,jdbcType=VARCHAR},
+      <if test="bAddress != null" >
+        b_address = #{bAddress,jdbcType=VARCHAR},
       </if>
       <if test="bShopname != null" >
         b_shopName = #{bShopname,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Bussiness" >
     update bussiness
-    set s_id = #{sId,jdbcType=VARCHAR},
+    set b_address = #{bAddress,jdbcType=VARCHAR},
       b_shopName = #{bShopname,jdbcType=VARCHAR},
       b_shopLogo = #{bShoplogo,jdbcType=VARCHAR},
       b_notice = #{bNotice,jdbcType=VARCHAR},

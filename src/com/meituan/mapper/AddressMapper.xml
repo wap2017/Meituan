@@ -8,7 +8,6 @@
     <result column="ad_phone" property="adPhone" jdbcType="VARCHAR" />
     <result column="ad_province" property="adProvince" jdbcType="VARCHAR" />
     <result column="ad_city" property="adCity" jdbcType="VARCHAR" />
-    <result column="ad_school" property="adSchool" jdbcType="VARCHAR" />
     <result column="ad_address" property="adAddress" jdbcType="VARCHAR" />
     <result column="ad_flag" property="adFlag" jdbcType="INTEGER" />
   </resultMap>
@@ -71,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ad_id, u_id, ad_name, ad_phone, ad_province, ad_city, ad_school, ad_address, ad_flag
+    ad_id, u_id, ad_name, ad_phone, ad_province, ad_city, ad_address, ad_flag
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.AddressExample" >
     select
@@ -106,12 +105,10 @@
   <insert id="insert" parameterType="com.meituan.pojo.Address" >
     insert into address (ad_id, u_id, ad_name, 
       ad_phone, ad_province, ad_city, 
-      ad_school, ad_address, ad_flag
-      )
+      ad_address, ad_flag)
     values (#{adId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{adName,jdbcType=VARCHAR}, 
       #{adPhone,jdbcType=VARCHAR}, #{adProvince,jdbcType=VARCHAR}, #{adCity,jdbcType=VARCHAR}, 
-      #{adSchool,jdbcType=VARCHAR}, #{adAddress,jdbcType=VARCHAR}, #{adFlag,jdbcType=INTEGER}
-      )
+      #{adAddress,jdbcType=VARCHAR}, #{adFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.meituan.pojo.Address" >
     insert into address
@@ -133,9 +130,6 @@
       </if>
       <if test="adCity != null" >
         ad_city,
-      </if>
-      <if test="adSchool != null" >
-        ad_school,
       </if>
       <if test="adAddress != null" >
         ad_address,
@@ -162,9 +156,6 @@
       </if>
       <if test="adCity != null" >
         #{adCity,jdbcType=VARCHAR},
-      </if>
-      <if test="adSchool != null" >
-        #{adSchool,jdbcType=VARCHAR},
       </if>
       <if test="adAddress != null" >
         #{adAddress,jdbcType=VARCHAR},
@@ -201,9 +192,6 @@
       <if test="record.adCity != null" >
         ad_city = #{record.adCity,jdbcType=VARCHAR},
       </if>
-      <if test="record.adSchool != null" >
-        ad_school = #{record.adSchool,jdbcType=VARCHAR},
-      </if>
       <if test="record.adAddress != null" >
         ad_address = #{record.adAddress,jdbcType=VARCHAR},
       </if>
@@ -223,7 +211,6 @@
       ad_phone = #{record.adPhone,jdbcType=VARCHAR},
       ad_province = #{record.adProvince,jdbcType=VARCHAR},
       ad_city = #{record.adCity,jdbcType=VARCHAR},
-      ad_school = #{record.adSchool,jdbcType=VARCHAR},
       ad_address = #{record.adAddress,jdbcType=VARCHAR},
       ad_flag = #{record.adFlag,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -248,9 +235,6 @@
       <if test="adCity != null" >
         ad_city = #{adCity,jdbcType=VARCHAR},
       </if>
-      <if test="adSchool != null" >
-        ad_school = #{adSchool,jdbcType=VARCHAR},
-      </if>
       <if test="adAddress != null" >
         ad_address = #{adAddress,jdbcType=VARCHAR},
       </if>
@@ -267,7 +251,6 @@
       ad_phone = #{adPhone,jdbcType=VARCHAR},
       ad_province = #{adProvince,jdbcType=VARCHAR},
       ad_city = #{adCity,jdbcType=VARCHAR},
-      ad_school = #{adSchool,jdbcType=VARCHAR},
       ad_address = #{adAddress,jdbcType=VARCHAR},
       ad_flag = #{adFlag,jdbcType=INTEGER}
     where ad_id = #{adId,jdbcType=VARCHAR}
