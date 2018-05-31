@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>年级</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <!--<tr>-->
+                <!--<td class="cli">123</td>-->
+                <!--<td>123</td>-->
+                <!--<td>123</td>-->
+                <!--<td>123</td>-->
+                <!--<td>123</td>-->
+            <!--</tr>-->
+        </tbody>
+
+    </table>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="top_page"><a href="javascript:;" data-page="1" class="jump" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <!--<li><a href="#">1</a></li>-->
+            <!--<li><a href="#">2</a></li>-->
+            <!--<li><a href="#">3</a></li>-->
+            <li class="last_page"><a href="javascript:;" aria-label="Next" class="jump"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    </nav>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $(function() {
+        $.ajax({
+            url: './my.json',
+            type: 'get',
+            success (result) {
+                var data = result.data
+                // 获取数据的长度
+                var data_length = data.length;
+
+                // 一页显示10个，一共多少页
+                var showRows = 10  //一页显示10条数据
+                var sumPage = Math.ceil(data_length / showRows)   //总页数，向上取整
+
+                // 第一次展示的时候,不需要用户点击那一页，默认显示你设置的前showRows条数据
+                for (var i = 0; i < showRows; i ++) {
+                    $('#tbody').append(
+                        `<tr>
+                         <td class=".cli">${data[i].sid}</td>
+                         <td>${data[i].sname}</td>
+                         <td>${data[i].age}</td>
+                         <td>${data[i].sex}</td>
+                         <td>${data[i].grade}</td>
+                    </tr>`
+                    )
+                }
+
+                // 插入跳转的页码，即1，2,3,4这些页码
+                for (var i = 0; i < sumPage; i ++) {
+                    $('.last_page').before(`<li><a class="jump" href="javascript:;" data-page="${i+1}"> ${i +1} </a></li>`)
+                }
+
+                $('.top_page').next('li').addClass('active')  //默认为第一个变蓝色
+
+                // 设置最后那个按钮的页码为最后一页，并且绑定数据为页码最大那个，比如一共为5页  就设为5
+                $('.last_page > a').data('page', sumPage)   //实际在标签中显示 <a data-page=5 > </a>
+
+                $('.pagination').delegate('.jump', 'click', function () {   //因为按钮是动态添加的，需要使用事件委托
+
+                    //给当前按钮添加样式，你点击了那个按钮页，那个按钮就变蓝色
+                    $(this).parent('li').addClass('active').siblings('li').removeClass('active')
+
+                    // 现在用户点击了第2页，也就是要从 10 - 19 条数据开始显示
+                    var click_page = $(this).data('page')   //记录用户点击了那一页的按钮，比如是2
+
+                    //禁用按钮
+                    if (click_page === 1) {
+                        $('.top_page').addClass('disabled')
+                    }else if (click_page === sumPage) {
+                        $('.last_page').addClass('disabled')
+                    }else {
+                        $('.top_page').removeClass('disabled')
+                        $('.last_page').removeClass('disabled')
+                    }
+
+                    // 先清空当前table里面的数据
+                    $('#tbody').empty();
+
+                    for (var i = (click_page-1) * 10; i < (click_page-1) * 10 + showRows; i++) {
+                        if (i > data.length-1) {
+                            break   //表示遍历到尽头了没有数据
+                        }
+                        $('#tbody').append(
+                            `<tr>
+                                 <td class=".cli">${data[i].sid}</td>
+                                 <td>${data[i].sname}</td>
+                                 <td>${data[i].age}</td>
+                                 <td>${data[i].sex}</td>
+                                 <td>${data[i].grade}</td>
+                            </tr>`
+                        )
+                    }
+                })
+            }
+        })
+
+        // function alert() {
+        //     alert(123)
+        // }
+    });
+</script>

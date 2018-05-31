@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.mapper.RemainingsumMapper" >
+  <resultMap id="BaseResultMap" type="com.meituan.pojo.Remainingsum" >
+    <id column="rs_id" property="rsId" jdbcType="VARCHAR" />
+    <result column="b_id" property="bId" jdbcType="VARCHAR" />
+    <result column="rs_depositMoney" property="rsDepositmoney" jdbcType="DOUBLE" />
+    <result column="rs_totalMoney" property="rsTotalmoney" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rs_id, b_id, rs_depositMoney, rs_totalMoney
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.RemainingsumExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from remainingsum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from remainingsum
+    where rs_id = #{rsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from remainingsum
+    where rs_id = #{rsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meituan.pojo.RemainingsumExample" >
+    delete from remainingsum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meituan.pojo.Remainingsum" >
+    insert into remainingsum (rs_id, b_id, rs_depositMoney, 
+      rs_totalMoney)
+    values (#{rsId,jdbcType=VARCHAR}, #{bId,jdbcType=VARCHAR}, #{rsDepositmoney,jdbcType=DOUBLE}, 
+      #{rsTotalmoney,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meituan.pojo.Remainingsum" >
+    insert into remainingsum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rsId != null" >
+        rs_id,
+      </if>
+      <if test="bId != null" >
+        b_id,
+      </if>
+      <if test="rsDepositmoney != null" >
+        rs_depositMoney,
+      </if>
+      <if test="rsTotalmoney != null" >
+        rs_totalMoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rsId != null" >
+        #{rsId,jdbcType=VARCHAR},
+      </if>
+      <if test="bId != null" >
+        #{bId,jdbcType=VARCHAR},
+      </if>
+      <if test="rsDepositmoney != null" >
+        #{rsDepositmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="rsTotalmoney != null" >
+        #{rsTotalmoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meituan.pojo.RemainingsumExample" resultType="java.lang.Integer" >
+    select count(*) from remainingsum
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update remainingsum
+    <set >
+      <if test="record.rsId != null" >
+        rs_id = #{record.rsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bId != null" >
+        b_id = #{record.bId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rsDepositmoney != null" >
+        rs_depositMoney = #{record.rsDepositmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rsTotalmoney != null" >
+        rs_totalMoney = #{record.rsTotalmoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update remainingsum
+    set rs_id = #{record.rsId,jdbcType=VARCHAR},
+      b_id = #{record.bId,jdbcType=VARCHAR},
+      rs_depositMoney = #{record.rsDepositmoney,jdbcType=DOUBLE},
+      rs_totalMoney = #{record.rsTotalmoney,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Remainingsum" >
+    update remainingsum
+    <set >
+      <if test="bId != null" >
+        b_id = #{bId,jdbcType=VARCHAR},
+      </if>
+      <if test="rsDepositmoney != null" >
+        rs_depositMoney = #{rsDepositmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="rsTotalmoney != null" >
+        rs_totalMoney = #{rsTotalmoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where rs_id = #{rsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Remainingsum" >
+    update remainingsum
+    set b_id = #{bId,jdbcType=VARCHAR},
+      rs_depositMoney = #{rsDepositmoney,jdbcType=DOUBLE},
+      rs_totalMoney = #{rsTotalmoney,jdbcType=DOUBLE}
+    where rs_id = #{rsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

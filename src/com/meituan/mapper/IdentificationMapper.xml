@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.mapper.IdentificationMapper" >
+  <resultMap id="BaseResultMap" type="com.meituan.pojo.Identification" >
+    <id column="s_id" property="sId" jdbcType="VARCHAR" />
+    <result column="s_type" property="sType" jdbcType="VARCHAR" />
+    <result column="s_stateId" property="sStateid" jdbcType="VARCHAR" />
+    <result column="s_telephone" property="sTelephone" jdbcType="VARCHAR" />
+    <result column="s_responsible" property="sResponsible" jdbcType="VARCHAR" />
+    <result column="s_province" property="sProvince" jdbcType="VARCHAR" />
+    <result column="s_city" property="sCity" jdbcType="VARCHAR" />
+    <result column="s_school" property="sSchool" jdbcType="VARCHAR" />
+    <result column="s_address" property="sAddress" jdbcType="VARCHAR" />
+    <result column="s_IdCardPos" property="sIdcardpos" jdbcType="VARCHAR" />
+    <result column="s_IdCardBack" property="sIdcardback" jdbcType="VARCHAR" />
+    <result column="s_license" property="sLicense" jdbcType="VARCHAR" />
+    <result column="s_hygiene" property="sHygiene" jdbcType="VARCHAR" />
+    <result column="s_apply" property="sApply" jdbcType="TIMESTAMP" />
+    <result column="s_hours" property="sHours" jdbcType="VARCHAR" />
+    <result column="s_notReason" property="sNotreason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    s_id, s_type, s_stateId, s_telephone, s_responsible, s_province, s_city, s_school, 
+    s_address, s_IdCardPos, s_IdCardBack, s_license, s_hygiene, s_apply, s_hours, s_notReason
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.IdentificationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from identification
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from identification
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from identification
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meituan.pojo.IdentificationExample" >
+    delete from identification
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meituan.pojo.Identification" >
+    insert into identification (s_id, s_type, s_stateId, 
+      s_telephone, s_responsible, s_province, 
+      s_city, s_school, s_address, 
+      s_IdCardPos, s_IdCardBack, s_license, 
+      s_hygiene, s_apply, s_hours, 
+      s_notReason)
+    values (#{sId,jdbcType=VARCHAR}, #{sType,jdbcType=VARCHAR}, #{sStateid,jdbcType=VARCHAR}, 
+      #{sTelephone,jdbcType=VARCHAR}, #{sResponsible,jdbcType=VARCHAR}, #{sProvince,jdbcType=VARCHAR}, 
+      #{sCity,jdbcType=VARCHAR}, #{sSchool,jdbcType=VARCHAR}, #{sAddress,jdbcType=VARCHAR}, 
+      #{sIdcardpos,jdbcType=VARCHAR}, #{sIdcardback,jdbcType=VARCHAR}, #{sLicense,jdbcType=VARCHAR}, 
+      #{sHygiene,jdbcType=VARCHAR}, #{sApply,jdbcType=TIMESTAMP}, #{sHours,jdbcType=VARCHAR}, 
+      #{sNotreason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meituan.pojo.Identification" >
+    insert into identification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="sType != null" >
+        s_type,
+      </if>
+      <if test="sStateid != null" >
+        s_stateId,
+      </if>
+      <if test="sTelephone != null" >
+        s_telephone,
+      </if>
+      <if test="sResponsible != null" >
+        s_responsible,
+      </if>
+      <if test="sProvince != null" >
+        s_province,
+      </if>
+      <if test="sCity != null" >
+        s_city,
+      </if>
+      <if test="sSchool != null" >
+        s_school,
+      </if>
+      <if test="sAddress != null" >
+        s_address,
+      </if>
+      <if test="sIdcardpos != null" >
+        s_IdCardPos,
+      </if>
+      <if test="sIdcardback != null" >
+        s_IdCardBack,
+      </if>
+      <if test="sLicense != null" >
+        s_license,
+      </if>
+      <if test="sHygiene != null" >
+        s_hygiene,
+      </if>
+      <if test="sApply != null" >
+        s_apply,
+      </if>
+      <if test="sHours != null" >
+        s_hours,
+      </if>
+      <if test="sNotreason != null" >
+        s_notReason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="sType != null" >
+        #{sType,jdbcType=VARCHAR},
+      </if>
+      <if test="sStateid != null" >
+        #{sStateid,jdbcType=VARCHAR},
+      </if>
+      <if test="sTelephone != null" >
+        #{sTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sResponsible != null" >
+        #{sResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="sProvince != null" >
+        #{sProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="sCity != null" >
+        #{sCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sSchool != null" >
+        #{sSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardpos != null" >
+        #{sIdcardpos,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardback != null" >
+        #{sIdcardback,jdbcType=VARCHAR},
+      </if>
+      <if test="sLicense != null" >
+        #{sLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="sHygiene != null" >
+        #{sHygiene,jdbcType=VARCHAR},
+      </if>
+      <if test="sApply != null" >
+        #{sApply,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sHours != null" >
+        #{sHours,jdbcType=VARCHAR},
+      </if>
+      <if test="sNotreason != null" >
+        #{sNotreason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meituan.pojo.IdentificationExample" resultType="java.lang.Integer" >
+    select count(*) from identification
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update identification
+    <set >
+      <if test="record.sId != null" >
+        s_id = #{record.sId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sType != null" >
+        s_type = #{record.sType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sStateid != null" >
+        s_stateId = #{record.sStateid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sTelephone != null" >
+        s_telephone = #{record.sTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sResponsible != null" >
+        s_responsible = #{record.sResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sProvince != null" >
+        s_province = #{record.sProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sCity != null" >
+        s_city = #{record.sCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sSchool != null" >
+        s_school = #{record.sSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sAddress != null" >
+        s_address = #{record.sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIdcardpos != null" >
+        s_IdCardPos = #{record.sIdcardpos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIdcardback != null" >
+        s_IdCardBack = #{record.sIdcardback,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sLicense != null" >
+        s_license = #{record.sLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sHygiene != null" >
+        s_hygiene = #{record.sHygiene,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sApply != null" >
+        s_apply = #{record.sApply,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sHours != null" >
+        s_hours = #{record.sHours,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sNotreason != null" >
+        s_notReason = #{record.sNotreason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update identification
+    set s_id = #{record.sId,jdbcType=VARCHAR},
+      s_type = #{record.sType,jdbcType=VARCHAR},
+      s_stateId = #{record.sStateid,jdbcType=VARCHAR},
+      s_telephone = #{record.sTelephone,jdbcType=VARCHAR},
+      s_responsible = #{record.sResponsible,jdbcType=VARCHAR},
+      s_province = #{record.sProvince,jdbcType=VARCHAR},
+      s_city = #{record.sCity,jdbcType=VARCHAR},
+      s_school = #{record.sSchool,jdbcType=VARCHAR},
+      s_address = #{record.sAddress,jdbcType=VARCHAR},
+      s_IdCardPos = #{record.sIdcardpos,jdbcType=VARCHAR},
+      s_IdCardBack = #{record.sIdcardback,jdbcType=VARCHAR},
+      s_license = #{record.sLicense,jdbcType=VARCHAR},
+      s_hygiene = #{record.sHygiene,jdbcType=VARCHAR},
+      s_apply = #{record.sApply,jdbcType=TIMESTAMP},
+      s_hours = #{record.sHours,jdbcType=VARCHAR},
+      s_notReason = #{record.sNotreason,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meituan.pojo.Identification" >
+    update identification
+    <set >
+      <if test="sType != null" >
+        s_type = #{sType,jdbcType=VARCHAR},
+      </if>
+      <if test="sStateid != null" >
+        s_stateId = #{sStateid,jdbcType=VARCHAR},
+      </if>
+      <if test="sTelephone != null" >
+        s_telephone = #{sTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sResponsible != null" >
+        s_responsible = #{sResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="sProvince != null" >
+        s_province = #{sProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="sCity != null" >
+        s_city = #{sCity,jdbcType=VARCHAR},
+      </if>
+      <if test="sSchool != null" >
+        s_school = #{sSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        s_address = #{sAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardpos != null" >
+        s_IdCardPos = #{sIdcardpos,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdcardback != null" >
+        s_IdCardBack = #{sIdcardback,jdbcType=VARCHAR},
+      </if>
+      <if test="sLicense != null" >
+        s_license = #{sLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="sHygiene != null" >
+        s_hygiene = #{sHygiene,jdbcType=VARCHAR},
+      </if>
+      <if test="sApply != null" >
+        s_apply = #{sApply,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sHours != null" >
+        s_hours = #{sHours,jdbcType=VARCHAR},
+      </if>
+      <if test="sNotreason != null" >
+        s_notReason = #{sNotreason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Identification" >
+    update identification
+    set s_type = #{sType,jdbcType=VARCHAR},
+      s_stateId = #{sStateid,jdbcType=VARCHAR},
+      s_telephone = #{sTelephone,jdbcType=VARCHAR},
+      s_responsible = #{sResponsible,jdbcType=VARCHAR},
+      s_province = #{sProvince,jdbcType=VARCHAR},
+      s_city = #{sCity,jdbcType=VARCHAR},
+      s_school = #{sSchool,jdbcType=VARCHAR},
+      s_address = #{sAddress,jdbcType=VARCHAR},
+      s_IdCardPos = #{sIdcardpos,jdbcType=VARCHAR},
+      s_IdCardBack = #{sIdcardback,jdbcType=VARCHAR},
+      s_license = #{sLicense,jdbcType=VARCHAR},
+      s_hygiene = #{sHygiene,jdbcType=VARCHAR},
+      s_apply = #{sApply,jdbcType=TIMESTAMP},
+      s_hours = #{sHours,jdbcType=VARCHAR},
+      s_notReason = #{sNotreason,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+</mapper>

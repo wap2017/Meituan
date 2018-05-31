@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<base href="/Meituan/admin/" />
+<meta charset="UTF-8">
+<title>Tables</title>
+<!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"
+	media="screen">
+<link href="assets/styles.css" rel="stylesheet" media="screen">
+<link href="assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">美团后台管理系统</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+						<li class="dropdown"><a href="#" role="button"
+							class="dropdown-toggle" data-toggle="dropdown"> <i
+								class="icon-user"></i>wap1997<i class="caret"></i>
+
+						</a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="#">Profile</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" href="login.html">Logout</a></li>
+							</ul></li>
+					</ul>
+					<ul class="nav">
+						<li class="active"><a href="#">主页</a></li>
+						<li class="dropdown"><a href="#" data-toggle="dropdown"
+							class="dropdown-toggle">设置<b class="caret"></b>
+
+						</a>
+							<ul class="dropdown-menu" id="menu1">
+								<li><a href="#">Tools <i class="icon-arrow-right"></i>
+
+								</a>
+									<ul class="dropdown-menu sub-menu">
+										<li><a href="#">Reports</a></li>
+										<li><a href="#">Logs</a></li>
+										<li><a href="#">Errors</a></li>
+									</ul></li>
+								<li><a href="#">SEO Settings</a></li>
+								<li><a href="#">Other Link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Other Link</a></li>
+								<li><a href="#">Other Link</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#" role="button"
+							class="dropdown-toggle" data-toggle="dropdown">内容 <i
+								class="caret"></i>
+
+						</a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="#">Blog</a></li>
+								<li><a tabindex="-1" href="#">News</a></li>
+								<li><a tabindex="-1" href="#">Custom Pages</a></li>
+								<li><a tabindex="-1" href="#">Calendar</a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" href="#">FAQ</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#" role="button"
+							class="dropdown-toggle" data-toggle="dropdown">用户 <i
+								class="caret"></i>
+
+						</a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="#">User List</a></li>
+								<li><a tabindex="-1" href="#">Search</a></li>
+								<li><a tabindex="-1" href="#">Permissions</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3" id="sidebar">
+				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+					<li><a href="index.html"><i class="icon-chevron-right"></i>
+							主页</a></li>
+					<li class="active"><a href="tables.html"><i
+							class="icon-chevron-right"></i>用户管理</a></li>
+					<li><a href="#"><span
+							class="badge badge-success pull-right">812</span>商家管理</a></li>
+					<li><a href="#"><span class="badge badge-info pull-right">27</span>订单管理</a>
+					</li>
+					<li><a href="#"><span class="badge badge-info pull-right">1,234</span>业绩管理</a>
+					</li>
+					<li><a href="#"><span class="badge badge-info pull-right">2,221</span>反馈管理</a>
+					</li>
+					<li><a href="#"><span class="badge badge-info pull-right">11</span>报告管理</a>
+					</li>
+					<li><a href="#"><span
+							class="badge badge-important pull-right">83</span>错误管理</a></li>
+					<li><a href="#"><span
+							class="badge badge-warning pull-right">4,231</span>人才培养</a></li>
+				</ul>
+			</div>
+			<!--/span-->
+			<div class="span9" id="content">
+
+
+
+				<div class="row-fluid">
+					<!-- block -->
+					<div class="block">
+						<div class="navbar navbar-inner block-header">
+							<div class="muted pull-left">用户管理</div>
+						</div>
+						<div class="block-content collapse in">
+							<div class="span12">
+								<div class="table-toolbar">
+									<div class="btn-group">
+									<a href="#myAlert" data-toggle="modal" class="btn btn-success">增加用户<i class="icon-plus icon-white"></i></a>
+									</div>
+									<div id="myAlert" class="modal hide">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">&times;</button>
+												<h3>增加用户</h3>
+											</div>
+											<div class="modal-body" style="align-items:center">
+												<!-- <p>Lorem ipsum dolor sit amet...</p> -->
+												
+												<div >
+												 <div class="control-group">
+												 <form action="../user/register.action" method="post" id="myForm">
+														 <label class="control-label" for="focusedInput">昵称:</label>
+													<input class="input-xlarge focused" name="uNickname"
+														type="text" value="">
+														<label class="control-label" for="focusedInput">头像:</label>
+													<button class="btn btn-large">点击上传图片</button>
+														 <label class="control-label" for="focusedInput">性别:</label>
+													<input class="input-xlarge focused" name="uSex"
+														type="text" value="">
+														 <label class="control-label" for="focusedInput">地址:</label>
+													<input class="input-xlarge focused" name="uAddress"
+														type="text" value="">
+														  </form>
+                                                  </div>
+                                                  </div>
+                                                
+											</div>
+											<div class="modal-footer">
+												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="document.getElementById('myForm').submit()">添加</a>
+												<a data-dismiss="modal" class="btn" href="#">取消</a>
+											</div>
+										</div>
+										
+									<div class="btn-group pull-right">
+										<button data-toggle="dropdown" class="btn dropdown-toggle">
+											工具<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu">
+											<li><a href="#">Print</a></li>
+											<li><a href="#">Save as PDF</a></li>
+											<li><a href="#">Export to Excel</a></li>
+										</ul>
+									</div>
+								</div>
+
+								<table cellpadding="0" cellspacing="0" border="0"
+									class="table table-striped table-bordered" id="example2">
+									<thead>
+										<tr>
+											<th>用户ID</th>
+											<th>头像</th>
+											<th>昵称</th>
+											<th>性别</th>
+											<th>是否禁止</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="gradeA">
+											<td>
+											<img src="../images/default.jpg" height="80dp" width="80dp"  style="border-radius: 50px;" />
+											</td>
+											<td>Webkit</td>
+											<td>OSX.3</td>
+											<td class="center">312.8</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Webkit</td>
+											<td>Safari 2.0</td>
+											<td>OSX.4+</td>
+											<td class="center">419.3</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Webkit</td>
+											<td>Safari 3.0</td>
+											<td>OSX.4+</td>
+											<td class="center">522.1</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Webkit</td>
+											<td>OmniWeb 5.5</td>
+											<td>OSX.4+</td>
+											<td class="center">420</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Webkit</td>
+											<td>S60</td>
+											<td>S60</td>
+											<td class="center">413</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 7.0</td>
+											<td>Win 95+ / OSX.1+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 7.5</td>
+											<td>Win 95+ / OSX.2+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 8.0</td>
+											<td>Win 95+ / OSX.2+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 8.5</td>
+											<td>Win 95+ / OSX.2+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 9.0</td>
+											<td>Win 95+ / OSX.3+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+										<tr class="gradeA">
+											<td>Presto</td>
+											<td>Opera 8.5</td>
+											<td>Win 95+ / OSX.2+</td>
+											<td class="center">-</td>
+											<td class="center">A</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- /block -->
+				</div>
+			</div>
+		</div>
+		<hr>
+		<footer>
+			<p>
+				&copy; Vincent Gabriel 2013 - More Templates <a
+					href="http://www.cssmoban.com/" target="_blank" title="cssmoban">cssmoban</a>
+		</footer>
+	</div>
+	<!--/.fluid-container-->
+
+
+
+	<script src="vendors/jquery-1.9.1.js"></script>
+	<script type="text/javascript">
+	//	$(function() {
+	//		find();
+	//	});
+		function find() {
+			$.ajax({
+						url : "../user/findAll.action",
+						type : "GET",
+						async: false,   // 太关键了，学习了，同步和异步的参数
+						contentType : "application/json;charset=UTF-8",
+						data : {},
+						success : function(data) {
+							<!--
+							$("#example2")
+									.html(
+											"<table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='example2'> <thead><tr><th>用户ID</th><th>头像</th> <th>昵称</th><th>性别</th><th>地址</th><th>是否禁止</th></tr></thead><tbody>");
+							-->
+
+							$(data).each(
+											function() {
+
+												let
+												tr = $("<tr class='odd gradeX'></tr>");
+												let
+												td_uId = $("<td>" + this.uId
+														+ "</td>");
+												let
+												td_uPicture = $("<td>"
+														+ this.uPicture
+														+ "</td>");
+												let
+												td_uNickname = $("<td>"
+														+ this.uNickname
+														+ "</td>");
+												let
+												td_uSex = $("<td>" + this.uSex
+														+ "</td>");
+												let
+												td_uSchool = $("<td class='center'>"
+														+ this.uAddress
+														+ "</td>");
+												let
+												td_uIsban = $("<td class='center'>"
+														+ this.uIsban + "</td>");
+
+												$(tr).append.call($(tr),
+														td_uId, td_uPicture,
+														td_uNickname, td_uSex,
+														td_uSchool, td_uIsban);
+
+												$("#example2").append(tr);
+
+											})
+
+						},
+						error : function(result) {
+							$("#select-box").html("查询失败");
+						}
+					});
+		}
+	</script>
+
+	<script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/scripts.js"></script>
+	<script src="assets/DT_bootstrap.js"></script>
+	<script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+</body>
+
+</html>
