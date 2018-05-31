@@ -10,6 +10,7 @@
     <result column="ad_city" property="adCity" jdbcType="VARCHAR" />
     <result column="ad_address" property="adAddress" jdbcType="VARCHAR" />
     <result column="ad_flag" property="adFlag" jdbcType="INTEGER" />
+    <result column="ad_sex" property="adSex" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ad_id, u_id, ad_name, ad_phone, ad_province, ad_city, ad_address, ad_flag
+    ad_id, u_id, ad_name, ad_phone, ad_province, ad_city, ad_address, ad_flag, ad_sex
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.AddressExample" >
     select
@@ -105,10 +106,12 @@
   <insert id="insert" parameterType="com.meituan.pojo.Address" >
     insert into address (ad_id, u_id, ad_name, 
       ad_phone, ad_province, ad_city, 
-      ad_address, ad_flag)
+      ad_address, ad_flag, ad_sex
+      )
     values (#{adId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{adName,jdbcType=VARCHAR}, 
       #{adPhone,jdbcType=VARCHAR}, #{adProvince,jdbcType=VARCHAR}, #{adCity,jdbcType=VARCHAR}, 
-      #{adAddress,jdbcType=VARCHAR}, #{adFlag,jdbcType=INTEGER})
+      #{adAddress,jdbcType=VARCHAR}, #{adFlag,jdbcType=INTEGER}, #{adSex,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.meituan.pojo.Address" >
     insert into address
@@ -137,6 +140,9 @@
       <if test="adFlag != null" >
         ad_flag,
       </if>
+      <if test="adSex != null" >
+        ad_sex,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="adId != null" >
@@ -162,6 +168,9 @@
       </if>
       <if test="adFlag != null" >
         #{adFlag,jdbcType=INTEGER},
+      </if>
+      <if test="adSex != null" >
+        #{adSex,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +207,9 @@
       <if test="record.adFlag != null" >
         ad_flag = #{record.adFlag,jdbcType=INTEGER},
       </if>
+      <if test="record.adSex != null" >
+        ad_sex = #{record.adSex,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +224,8 @@
       ad_province = #{record.adProvince,jdbcType=VARCHAR},
       ad_city = #{record.adCity,jdbcType=VARCHAR},
       ad_address = #{record.adAddress,jdbcType=VARCHAR},
-      ad_flag = #{record.adFlag,jdbcType=INTEGER}
+      ad_flag = #{record.adFlag,jdbcType=INTEGER},
+      ad_sex = #{record.adSex,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +254,9 @@
       <if test="adFlag != null" >
         ad_flag = #{adFlag,jdbcType=INTEGER},
       </if>
+      <if test="adSex != null" >
+        ad_sex = #{adSex,jdbcType=VARCHAR},
+      </if>
     </set>
     where ad_id = #{adId,jdbcType=VARCHAR}
   </update>
@@ -252,7 +268,8 @@
       ad_province = #{adProvince,jdbcType=VARCHAR},
       ad_city = #{adCity,jdbcType=VARCHAR},
       ad_address = #{adAddress,jdbcType=VARCHAR},
-      ad_flag = #{adFlag,jdbcType=INTEGER}
+      ad_flag = #{adFlag,jdbcType=INTEGER},
+      ad_sex = #{adSex,jdbcType=VARCHAR}
     where ad_id = #{adId,jdbcType=VARCHAR}
   </update>
 </mapper>

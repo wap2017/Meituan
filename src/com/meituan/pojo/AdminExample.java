@@ -174,73 +174,73 @@ public class AdminExample {
             return (Criteria) this;
         }
 
-        public Criteria andAAccountIsNull() {
-            addCriterion("a_account is null");
+        public Criteria andANumberIsNull() {
+            addCriterion("a_number is null");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountIsNotNull() {
-            addCriterion("a_account is not null");
+        public Criteria andANumberIsNotNull() {
+            addCriterion("a_number is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountEqualTo(String value) {
-            addCriterion("a_account =", value, "aAccount");
+        public Criteria andANumberEqualTo(String value) {
+            addCriterion("a_number =", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountNotEqualTo(String value) {
-            addCriterion("a_account <>", value, "aAccount");
+        public Criteria andANumberNotEqualTo(String value) {
+            addCriterion("a_number <>", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountGreaterThan(String value) {
-            addCriterion("a_account >", value, "aAccount");
+        public Criteria andANumberGreaterThan(String value) {
+            addCriterion("a_number >", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountGreaterThanOrEqualTo(String value) {
-            addCriterion("a_account >=", value, "aAccount");
+        public Criteria andANumberGreaterThanOrEqualTo(String value) {
+            addCriterion("a_number >=", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountLessThan(String value) {
-            addCriterion("a_account <", value, "aAccount");
+        public Criteria andANumberLessThan(String value) {
+            addCriterion("a_number <", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountLessThanOrEqualTo(String value) {
-            addCriterion("a_account <=", value, "aAccount");
+        public Criteria andANumberLessThanOrEqualTo(String value) {
+            addCriterion("a_number <=", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountLike(String value) {
-            addCriterion("a_account like", value, "aAccount");
+        public Criteria andANumberLike(String value) {
+            addCriterion("a_number like", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountNotLike(String value) {
-            addCriterion("a_account not like", value, "aAccount");
+        public Criteria andANumberNotLike(String value) {
+            addCriterion("a_number not like", value, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountIn(List<String> values) {
-            addCriterion("a_account in", values, "aAccount");
+        public Criteria andANumberIn(List<String> values) {
+            addCriterion("a_number in", values, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountNotIn(List<String> values) {
-            addCriterion("a_account not in", values, "aAccount");
+        public Criteria andANumberNotIn(List<String> values) {
+            addCriterion("a_number not in", values, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountBetween(String value1, String value2) {
-            addCriterion("a_account between", value1, value2, "aAccount");
+        public Criteria andANumberBetween(String value1, String value2) {
+            addCriterion("a_number between", value1, value2, "aNumber");
             return (Criteria) this;
         }
 
-        public Criteria andAAccountNotBetween(String value1, String value2) {
-            addCriterion("a_account not between", value1, value2, "aAccount");
+        public Criteria andANumberNotBetween(String value1, String value2) {
+            addCriterion("a_number not between", value1, value2, "aNumber");
             return (Criteria) this;
         }
 

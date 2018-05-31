@@ -17,6 +17,8 @@ public class Address {
 
     private Integer adFlag;
 
+    private String adSex;
+
     public String getAdId() {
         return adId;
     }
@@ -79,5 +81,13 @@ public class Address {
 
     public void setAdFlag(Integer adFlag) {
         this.adFlag = adFlag;
+    }
+
+    public String getAdSex() {
+        return adSex;
+    }
+
+    public void setAdSex(String adSex) {
+        this.adSex = adSex == null ? null : adSex.trim();
     }
 }

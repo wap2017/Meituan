@@ -1,17 +1,17 @@
 package com.meituan.pojo;
 
-import java.util.Date;
-
 public class Feedback {
     private String fId;
 
     private String fReceiveid;
 
-    private Date fTime;
-
     private String fContent;
 
     private Integer fReaded;
+
+    private String mId;
+
+    private String oId;
 
     public String getfId() {
         return fId;
@@ -29,14 +29,6 @@ public class Feedback {
         this.fReceiveid = fReceiveid == null ? null : fReceiveid.trim();
     }
 
-    public Date getfTime() {
-        return fTime;
-    }
-
-    public void setfTime(Date fTime) {
-        this.fTime = fTime;
-    }
-
     public String getfContent() {
         return fContent;
     }
@@ -51,5 +43,21 @@ public class Feedback {
 
     public void setfReaded(Integer fReaded) {
         this.fReaded = fReaded;
+    }
+
+    public String getmId() {
+        return mId;
+    }
+
+    public void setmId(String mId) {
+        this.mId = mId == null ? null : mId.trim();
+    }
+
+    public String getoId() {
+        return oId;
+    }
+
+    public void setoId(String oId) {
+        this.oId = oId == null ? null : oId.trim();
     }
 }

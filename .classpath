@@ -14,5 +14,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/Workspace/bookstore1.0/WebContent/WEB-INF/lib/commons-lang-2.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

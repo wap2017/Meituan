@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="com.meituan.pojo.Feedback" >
     <id column="f_id" property="fId" jdbcType="VARCHAR" />
     <result column="f_receiveId" property="fReceiveid" jdbcType="VARCHAR" />
-    <result column="f_time" property="fTime" jdbcType="TIMESTAMP" />
     <result column="f_content" property="fContent" jdbcType="VARCHAR" />
     <result column="f_readed" property="fReaded" jdbcType="INTEGER" />
+    <result column="m_id" property="mId" jdbcType="VARCHAR" />
+    <result column="o_id" property="oId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    f_id, f_receiveId, f_time, f_content, f_readed
+    f_id, f_receiveId, f_content, f_readed, m_id, o_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meituan.pojo.FeedbackExample" >
     select
@@ -100,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.meituan.pojo.Feedback" >
-    insert into feedback (f_id, f_receiveId, f_time, 
-      f_content, f_readed)
-    values (#{fId,jdbcType=VARCHAR}, #{fReceiveid,jdbcType=VARCHAR}, #{fTime,jdbcType=TIMESTAMP}, 
-      #{fContent,jdbcType=VARCHAR}, #{fReaded,jdbcType=INTEGER})
+    insert into feedback (f_id, f_receiveId, f_content, 
+      f_readed, m_id, o_id)
+    values (#{fId,jdbcType=VARCHAR}, #{fReceiveid,jdbcType=VARCHAR}, #{fContent,jdbcType=VARCHAR}, 
+      #{fReaded,jdbcType=INTEGER}, #{mId,jdbcType=VARCHAR}, #{oId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.meituan.pojo.Feedback" >
     insert into feedback
@@ -114,14 +115,17 @@
       <if test="fReceiveid != null" >
         f_receiveId,
       </if>
-      <if test="fTime != null" >
-        f_time,
-      </if>
       <if test="fContent != null" >
         f_content,
       </if>
       <if test="fReaded != null" >
         f_readed,
+      </if>
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="oId != null" >
+        o_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +135,17 @@
       <if test="fReceiveid != null" >
         #{fReceiveid,jdbcType=VARCHAR},
       </if>
-      <if test="fTime != null" >
-        #{fTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="fContent != null" >
         #{fContent,jdbcType=VARCHAR},
       </if>
       <if test="fReaded != null" >
         #{fReaded,jdbcType=INTEGER},
+      </if>
+      <if test="mId != null" >
+        #{mId,jdbcType=VARCHAR},
+      </if>
+      <if test="oId != null" >
+        #{oId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -157,14 +164,17 @@
       <if test="record.fReceiveid != null" >
         f_receiveId = #{record.fReceiveid,jdbcType=VARCHAR},
       </if>
-      <if test="record.fTime != null" >
-        f_time = #{record.fTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.fContent != null" >
         f_content = #{record.fContent,jdbcType=VARCHAR},
       </if>
       <if test="record.fReaded != null" >
         f_readed = #{record.fReaded,jdbcType=INTEGER},
+      </if>
+      <if test="record.mId != null" >
+        m_id = #{record.mId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oId != null" >
+        o_id = #{record.oId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -175,9 +185,10 @@
     update feedback
     set f_id = #{record.fId,jdbcType=VARCHAR},
       f_receiveId = #{record.fReceiveid,jdbcType=VARCHAR},
-      f_time = #{record.fTime,jdbcType=TIMESTAMP},
       f_content = #{record.fContent,jdbcType=VARCHAR},
-      f_readed = #{record.fReaded,jdbcType=INTEGER}
+      f_readed = #{record.fReaded,jdbcType=INTEGER},
+      m_id = #{record.mId,jdbcType=VARCHAR},
+      o_id = #{record.oId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,14 +199,17 @@
       <if test="fReceiveid != null" >
         f_receiveId = #{fReceiveid,jdbcType=VARCHAR},
       </if>
-      <if test="fTime != null" >
-        f_time = #{fTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="fContent != null" >
         f_content = #{fContent,jdbcType=VARCHAR},
       </if>
       <if test="fReaded != null" >
         f_readed = #{fReaded,jdbcType=INTEGER},
+      </if>
+      <if test="mId != null" >
+        m_id = #{mId,jdbcType=VARCHAR},
+      </if>
+      <if test="oId != null" >
+        o_id = #{oId,jdbcType=VARCHAR},
       </if>
     </set>
     where f_id = #{fId,jdbcType=VARCHAR}
@@ -203,9 +217,10 @@
   <update id="updateByPrimaryKey" parameterType="com.meituan.pojo.Feedback" >
     update feedback
     set f_receiveId = #{fReceiveid,jdbcType=VARCHAR},
-      f_time = #{fTime,jdbcType=TIMESTAMP},
       f_content = #{fContent,jdbcType=VARCHAR},
-      f_readed = #{fReaded,jdbcType=INTEGER}
+      f_readed = #{fReaded,jdbcType=INTEGER},
+      m_id = #{mId,jdbcType=VARCHAR},
+      o_id = #{oId,jdbcType=VARCHAR}
     where f_id = #{fId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -3,7 +3,7 @@ package com.meituan.pojo;
 public class Admin {
     private String aId;
 
-    private String aAccount;
+    private String aNumber;
 
     private String aPwd;
 
@@ -15,12 +15,12 @@ public class Admin {
         this.aId = aId == null ? null : aId.trim();
     }
 
-    public String getaAccount() {
-        return aAccount;
+    public String getaNumber() {
+        return aNumber;
     }
 
-    public void setaAccount(String aAccount) {
-        this.aAccount = aAccount == null ? null : aAccount.trim();
+    public void setaNumber(String aNumber) {
+        this.aNumber = aNumber == null ? null : aNumber.trim();
     }
 
     public String getaPwd() {

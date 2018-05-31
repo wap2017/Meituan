@@ -1,7 +1,6 @@
 package com.meituan.pojo;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class FeedbackExample {
@@ -245,66 +244,6 @@ public class FeedbackExample {
             return (Criteria) this;
         }
 
-        public Criteria andFTimeIsNull() {
-            addCriterion("f_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeIsNotNull() {
-            addCriterion("f_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeEqualTo(Date value) {
-            addCriterion("f_time =", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeNotEqualTo(Date value) {
-            addCriterion("f_time <>", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeGreaterThan(Date value) {
-            addCriterion("f_time >", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("f_time >=", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeLessThan(Date value) {
-            addCriterion("f_time <", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeLessThanOrEqualTo(Date value) {
-            addCriterion("f_time <=", value, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeIn(List<Date> values) {
-            addCriterion("f_time in", values, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeNotIn(List<Date> values) {
-            addCriterion("f_time not in", values, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeBetween(Date value1, Date value2) {
-            addCriterion("f_time between", value1, value2, "fTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andFTimeNotBetween(Date value1, Date value2) {
-            addCriterion("f_time not between", value1, value2, "fTime");
-            return (Criteria) this;
-        }
-
         public Criteria andFContentIsNull() {
             addCriterion("f_content is null");
             return (Criteria) this;
@@ -432,6 +371,146 @@ public class FeedbackExample {
 
         public Criteria andFReadedNotBetween(Integer value1, Integer value2) {
             addCriterion("f_readed not between", value1, value2, "fReaded");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIsNull() {
+            addCriterion("m_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIsNotNull() {
+            addCriterion("m_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdEqualTo(String value) {
+            addCriterion("m_id =", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotEqualTo(String value) {
+            addCriterion("m_id <>", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdGreaterThan(String value) {
+            addCriterion("m_id >", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdGreaterThanOrEqualTo(String value) {
+            addCriterion("m_id >=", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdLessThan(String value) {
+            addCriterion("m_id <", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdLessThanOrEqualTo(String value) {
+            addCriterion("m_id <=", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdLike(String value) {
+            addCriterion("m_id like", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotLike(String value) {
+            addCriterion("m_id not like", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIn(List<String> values) {
+            addCriterion("m_id in", values, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotIn(List<String> values) {
+            addCriterion("m_id not in", values, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdBetween(String value1, String value2) {
+            addCriterion("m_id between", value1, value2, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotBetween(String value1, String value2) {
+            addCriterion("m_id not between", value1, value2, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdIsNull() {
+            addCriterion("o_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdIsNotNull() {
+            addCriterion("o_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdEqualTo(String value) {
+            addCriterion("o_id =", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdNotEqualTo(String value) {
+            addCriterion("o_id <>", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdGreaterThan(String value) {
+            addCriterion("o_id >", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdGreaterThanOrEqualTo(String value) {
+            addCriterion("o_id >=", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdLessThan(String value) {
+            addCriterion("o_id <", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdLessThanOrEqualTo(String value) {
+            addCriterion("o_id <=", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdLike(String value) {
+            addCriterion("o_id like", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdNotLike(String value) {
+            addCriterion("o_id not like", value, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdIn(List<String> values) {
+            addCriterion("o_id in", values, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdNotIn(List<String> values) {
+            addCriterion("o_id not in", values, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdBetween(String value1, String value2) {
+            addCriterion("o_id between", value1, value2, "oId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOIdNotBetween(String value1, String value2) {
+            addCriterion("o_id not between", value1, value2, "oId");
             return (Criteria) this;
         }
     }

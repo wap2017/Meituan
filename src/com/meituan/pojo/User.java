@@ -1,25 +1,24 @@
 package com.meituan.pojo;
 
 public class User {
-    private Integer uId;
+    private String uId;
 
     private String uPicture;
 
+    private String uPassword;
+
+    private Double uAccount;
+
     private String uNickname;
 
-    private String uSex;
-
-    private String uAddress;
-
     private Integer uIsban;
-    
 
-    public Integer getuId() {
+    public String getuId() {
         return uId;
     }
 
-    public void setuId(Integer uId) {
-        this.uId = uId;
+    public void setuId(String uId) {
+        this.uId = uId == null ? null : uId.trim();
     }
 
     public String getuPicture() {
@@ -30,28 +29,28 @@ public class User {
         this.uPicture = uPicture == null ? null : uPicture.trim();
     }
 
+    public String getuPassword() {
+        return uPassword;
+    }
+
+    public void setuPassword(String uPassword) {
+        this.uPassword = uPassword == null ? null : uPassword.trim();
+    }
+
+    public Double getuAccount() {
+        return uAccount;
+    }
+
+    public void setuAccount(Double uAccount) {
+        this.uAccount = uAccount;
+    }
+
     public String getuNickname() {
         return uNickname;
     }
 
     public void setuNickname(String uNickname) {
         this.uNickname = uNickname == null ? null : uNickname.trim();
-    }
-
-    public String getuSex() {
-        return uSex;
-    }
-
-    public void setuSex(String uSex) {
-        this.uSex = uSex == null ? null : uSex.trim();
-    }
-
-    public String getuAddress() {
-        return uAddress;
-    }
-
-    public void setuAddress(String uAddress) {
-        this.uAddress = uAddress == null ? null : uAddress.trim();
     }
 
     public Integer getuIsban() {

@@ -653,6 +653,76 @@ public class AddressExample {
             addCriterion("ad_flag not between", value1, value2, "adFlag");
             return (Criteria) this;
         }
+
+        public Criteria andAdSexIsNull() {
+            addCriterion("ad_sex is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexIsNotNull() {
+            addCriterion("ad_sex is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexEqualTo(String value) {
+            addCriterion("ad_sex =", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexNotEqualTo(String value) {
+            addCriterion("ad_sex <>", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexGreaterThan(String value) {
+            addCriterion("ad_sex >", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexGreaterThanOrEqualTo(String value) {
+            addCriterion("ad_sex >=", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexLessThan(String value) {
+            addCriterion("ad_sex <", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexLessThanOrEqualTo(String value) {
+            addCriterion("ad_sex <=", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexLike(String value) {
+            addCriterion("ad_sex like", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexNotLike(String value) {
+            addCriterion("ad_sex not like", value, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexIn(List<String> values) {
+            addCriterion("ad_sex in", values, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexNotIn(List<String> values) {
+            addCriterion("ad_sex not in", values, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexBetween(String value1, String value2) {
+            addCriterion("ad_sex between", value1, value2, "adSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdSexNotBetween(String value1, String value2) {
+            addCriterion("ad_sex not between", value1, value2, "adSex");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
