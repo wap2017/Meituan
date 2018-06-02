@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +32,11 @@
 					<ul class="nav pull-right">
 						<li class="dropdown"><a href="#" role="button"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="icon-user"></i>wap1997<i class="caret"></i>
+								class="icon-user"></i>${username}<i class="caret"></i>
 
 						</a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Profile</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="login.html">Logout</a></li>
+								<li><a tabindex="-1" href="login.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -48,22 +48,14 @@
 		<div class="row-fluid">
 			<div class="span3" id="sidebar">
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-					<li  class="active"><a href="orders.html"><i class="icon-chevron-right"></i>
+					<li><a href="orders.jsp"><i class="icon-chevron-right"></i>
 							订单管理</a></li>
-					<li><a href="users.html"><i class="icon-chevron-right"></i>用户管理</a></li>
-					<li><a href="business.html"><i class="icon-chevron-right"></i>商家管理</a></li>
-					<li><a href="identification.html"><i class="icon-chevron-right"></i>认证管理</a>
+					<li><a href="users.jsp"><i class="icon-chevron-right"></i>用户管理</a></li>
+					<li><a href="business.jsp"><i class="icon-chevron-right"></i>商家管理</a></li>
+					<li><a href="identification.jsp"><i class="icon-chevron-right"></i>认证管理</a>
 					</li>
-					<li><a href="#"><i class="icon-chevron-right"></i>认证记录/a>
+					<li class="active"><a href="history.jsp"><i class="icon-chevron-right"></i>认证记录</a>
 					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">2,221</span>反馈管理</a>
-					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">11</span>报告管理</a>
-					</li>
-					<li><a href="#"><span
-							class="badge badge-important pull-right">83</span>错误管理</a></li>
-					<li><a href="#"><span
-							class="badge badge-warning pull-right">4,231</span>人才培养</a></li>
 				</ul>
 			</div>
 			<!--/span-->
@@ -75,7 +67,7 @@
 					<!-- block -->
 					<div class="block">
 						<div class="navbar navbar-inner block-header">
-							<div class="muted pull-left">查看订单</div>
+							<div class="muted pull-left">认证记录</div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
@@ -218,8 +210,8 @@
 		<hr>
 		<footer>
 			<p>
-				&copy; Vincent Gabriel 2013 - More Templates <a
-					href="http://www.cssmoban.com/" target="_blank" title="cssmoban">cssmoban</a>
+				&copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
+					href="https://github.com/wap2017/Meituan.git" target="_blank" title="访问博客">github入口</a>
 		</footer>
 	</div>
 	<!--/.fluid-container-->
@@ -243,7 +235,7 @@
 		});
 		function find() {
 			$.ajax({
-						url : "../order/findAll.action",
+						url : "../business/findAll.action",
 						type : "GET",
 						async: false,   // 太关键了，学习了，同步和异步的参数
 						contentType : "application/json;charset=UTF-8",
@@ -252,12 +244,12 @@
 						
 							$("#example2")
 									.html("<table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='example2'><thead><tr>"
-								+"<th style='text-align:center;vertical-align:middle;'>订单号</th>"
-								+"<th style='text-align:center;vertical-align:middle;'>商家名称</th>"								
-								+"<th style='text-align:center;vertical-align:middle;'>用户昵称</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>商家名称</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>联系方式</th>"								
+								+"<th style='text-align:center;vertical-align:middle;'>负责人</th>"
 								+"<th style='text-align:center;vertical-align:middle;'>地址</th>"
-								+"<th style='text-align:center;vertical-align:middle;'>总价</th>"
-								+"<th style='text-align:center;vertical-align:middle;'>订单状态</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>状态</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>拒绝原因</th>"
 								+"</tr></thead>");
 
 							$(data).each(
@@ -265,21 +257,21 @@
 												let
 												tr = $("<tr class='odd gradeX'></tr>");
 												let
-												td_oId= $("<td style='text-align:center;vertical-align:middle;'>" + this.oId
+												td_oId= $("<td style='text-align:center;vertical-align:middle;'>" + this.bShopname
 														+ "</td>");
 												let
-												td_uId = $("<td style='text-align:center;vertical-align:middle;'>" + this.uId
+												td_uId = $("<td style='text-align:center;vertical-align:middle;'>" + this.sRphone
 														+ "</td>");
 												;
 												let
 												td_bId = $("<td style='text-align:center;vertical-align:middle;'>"
-														+ this.bId
+														+ this.sResponsible
 														+ "</td>");
 												let
-												td_address = $("<td style='text-align:center;vertical-align:middle;'>" + this.adEndid
+												td_address = $("<td style='text-align:center;vertical-align:middle;'>" + this.sAddress
 														+ "</td>");
-												let td_price=$("<td  style='text-align:center;vertical-align:middle;'>"+this.oOrderprice+"</td>");
-												let td_state=$("<td  style='text-align:center;vertical-align:middle;'>"+this.oShopstate+"</td>");
+												let td_price=$("<td  style='text-align:center;vertical-align:middle;'>"+this.sStatetype+"</td>");
+												let td_state=$("<td  style='text-align:center;vertical-align:middle;'>"+this.sNotreason+"</td>");
 
 												$(tr).append.call($(tr),
 														td_oId,td_uId, td_bId,

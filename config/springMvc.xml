@@ -18,7 +18,7 @@
 		<!-- 设置前缀 -->
 		<property name="prefix" value="/admin/"></property>
 		<!-- 设置后缀 -->
-		<property name="suffix" value=".html"></property>
+		<property name="suffix" value=".jsp"></property>
 
 	</bean>
 

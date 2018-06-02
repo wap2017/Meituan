@@ -13,7 +13,7 @@ public interface  BusinessService {
     
     int accept(String bId);
     
-    int reject(String bId);
+    int reject(String bId,String notReason);
     
     
     int count();

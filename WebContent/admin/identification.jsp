@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +32,11 @@
 					<ul class="nav pull-right">
 						<li class="dropdown"><a href="#" role="button"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="icon-user"></i>wap1997<i class="caret"></i>
+								class="icon-user"></i>${username}<i class="caret"></i>
 
 						</a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Profile</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="login.html">Logout</a></li>
+								<li><a tabindex="-1" href="login.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -48,26 +48,18 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-					<li><a href="orders.html"><i class="icon-chevron-right"></i>
+					<li><a href="orders.jsp"><i class="icon-chevron-right"></i>
 							订单管理</a></li>
-					<li><a href="users.html"><i
+					<li><a href="users.jsp"><i
 							class="icon-chevron-right"></i>用户管理</a></li>
-					<li><a href="business.html"><i
+					<li><a href="business.jsp"><i
 							class="icon-chevron-right"></i>商家管理</a></li>
-					<li class="active"><a href="identification.html"><i
+					<li class="active"><a href="identification.jsp"><i
 							class="icon-chevron-right"></i>认证管理</a>
 					</li>
-					<li><a href="#"><i
+					<li><a href="history.jsp"><i
 							class="icon-chevron-right"></i>认证记录</a>
 					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">2,221</span>反馈管理</a>
-					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">11</span>报告管理</a>
-					</li>
-					<li><a href="#"><span
-							class="badge badge-important pull-right">83</span>错误管理</a></li>
-					<li><a href="#"><span
-							class="badge badge-warning pull-right">4,231</span>人才培养</a></li>
 				</ul>
 			</div>
                 
@@ -76,15 +68,17 @@
 											<div class="modal-header">
 											<h3>填写拒绝理由</h3>
 											</div>
-											
+											 <form action="../business/reject.action" method="post" id="myForm">
 											<div class="modal-body" style="align-items:center">
-											   <textarea rows="10" cols="10"></textarea>
+											   <input  type="text" id="rejectBId" name="regectBId"  value="123" style="display:none"/>
+											   <textarea name="sNotreason" rows="10" cols="10"></textarea>
                                             </div>
                                             
 											<div class="modal-footer">
-												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="addUser()">添加</a>
+												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="reject()">拒绝</a>
 												<a data-dismiss="modal" class="btn" href="#">取消</a>
 											</div>
+											</form>
 				</div>
                 <div class="span9" id="content">
                     <div class="row-fluid">
@@ -143,9 +137,11 @@
                 </div>
             </div>
             <hr>
-            <footer>
-                <p>&copy; Vincent Gabriel 2013 - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="cssmoban">cssmoban</a>
-            </footer>
+          	<footer>
+			<p>
+				&copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
+					href="https://github.com/wap2017/Meituan.git" target="_blank" title="访问博客">github入口</a>
+		</footer>
         </div>
         <!--/.fluid-container-->
         <script src="vendors/jquery-1.9.1.min.js"></script>
@@ -153,11 +149,17 @@
         <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="assets/scripts.js"></script>
         <script type="text/javascript">
- //	$(function() {
-//  		    count();
-//			find();
-//			
-//	});
+	$(function() {
+ 		    count();
+			find();
+			
+	});
+	
+	
+	function showRejectBId(e){
+		$("#rejectBId").attr("value",e.getAttribute("rejectBId"));
+	     
+	}
   	
   	function count() {
 		$.ajax({
@@ -194,8 +196,7 @@
 							$("#down").html("申请时间:<input type='text' value='"+a+"'/><br/>"
                                           +"联系方式:<input  type='text' value='"+data.sRphone+"'/><br/>"
                                          +"<button class='btn btn-success btn-large' onclick=accept("+data.bId+")>通过审核</button>&nbsp&nbsp&nbsp"
-										 +"<button class='btn btn-danger btn-large'  onclick=reject("+data.bId+") >拒绝请求</button>");
-
+							+"<a href='#myAlert' data-toggle='modal' class='btn btn-danger btn-large' onclick=showRejectBId(this) rejectBId="+data.bId+" >拒绝请求</a>");   
 							$('#pos').html("<a href='#' class='thumbnail'>"
                             +" <img data-src='holder.js/260x180' alt='260x180' style='width: 260px; height: 180px;' src='../business/pos/"+data.bId+".jpg'>"
                             +"</a>'");
@@ -231,8 +232,7 @@
 			}
 			
 			function  reject(bId){
-				
-				location.href="../business/reject.action?bId="+bId;
+				$("#myForm").submit();
 			}
 			
 			

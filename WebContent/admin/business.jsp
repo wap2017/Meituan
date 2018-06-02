@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +32,11 @@
 					<ul class="nav pull-right">
 						<li class="dropdown"><a href="#" role="button"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="icon-user"></i>wap1997<i class="caret"></i>
+								class="icon-user"></i>${username}<i class="caret"></i>
 
 						</a>
 							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Profile</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="login.html">Logout</a></li>
+								<li><a tabindex="-1" href="login.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -48,111 +48,73 @@
 		<div class="row-fluid">
 			<div class="span3" id="sidebar">
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-					<li><a href="orders.html"><i class="icon-chevron-right"></i>
+					<li><a href="orders.jsp"><i class="icon-chevron-right"></i>
 							订单管理</a></li>
-					<li class="active"><a href="users.html"><i
+					<li><a href="users.jsp"><i
 							class="icon-chevron-right"></i>用户管理</a></li>
-					<li><a href="business.html"><i
-							class="icon-chevron-right"></i>商家管理</a></li>
-					<li><a href="identification.html"><i
-							class="icon-chevron-right"></i>认证管理</a>
+					<li class="active"><a href="business.jsp"><i class="icon-chevron-right"></i>商家管理</a></li>
+					<li><a href="identification.jsp"><i class="icon-chevron-right"></i>认证管理</a>
 					</li>
-					<li><a href="#"><i
-							class="icon-chevron-right"></i>认证记录</a>
+					<li><a href="history.jsp"><i class="icon-chevron-right"></i>认证记录</a>
 					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">2,221</span>反馈管理</a>
-					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">11</span>报告管理</a>
-					</li>
-					<li><a href="#"><span
-							class="badge badge-important pull-right">83</span>错误管理</a></li>
-					<li><a href="#"><span
-							class="badge badge-warning pull-right">4,231</span>人才培养</a></li>
 				</ul>
 			</div>
 			<!--/span-->
 			<div class="span9" id="content">
 
 
-
+                              <div id="myUpdateAlert" class="modal hide">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">&times;</button>
+												<h3>修改商家</h3>
+											</div>
+											<div class="modal-body" style="align-items:center">
+												 <div class="control-group">
+												 <form action="../business/update.action" method="post" id="myUpdateForm" enctype="multipart/form-data">
+												     <input style="display:none"  type="text" id="bId" name="bId" value="001"/>
+												     		
+														 <label class="control-label" for="focusedInput">商家名称:</label>
+													<input class="input-xlarge focused" name="bShopname" id="bShopname"
+														type="text" value="">    
+														
+														  <label class="control-label" for="focusedInput">营业状态:</label>
+													<input class="input-xlarge focused" name="sStatetype" id="sStatetype"
+														type="text" value="">    
+														
+														 <label class="control-label" for="focusedInput">店主名字:</label>
+													<input class="input-xlarge focused" name="sResponsible" id="sResponsible"
+														type="text" value="">    
+														 <label class="control-label" for="focusedInput">商家电话:</label>
+													<input class="input-xlarge focused" name="sTelephone" id="sTelephone"
+														type="text" value="">    
+														 <label class="control-label" for="focusedInput">商家地址:</label>
+													<input class="input-xlarge focused" name="sAddress" id="sAddress"
+														type="text" value="">    
+														 <label class="control-label" for="focusedInput">营业时间:</label>
+													<input class="input-xlarge focused" name="sHours" id="sHours"
+														type="text" value="">    
+														 
+														  </form>
+														 
+                                                  </div>
+                                                
+											</div>
+											<div class="modal-footer">
+												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick=updateBusiness()>修改</a>
+												<a data-dismiss="modal" class="btn" href="#">取消</a>
+											</div>
+											</div>
+											
 				<div class="row-fluid">
 					<!-- block -->
 					<div class="block">
 						<div class="navbar navbar-inner block-header">
-							<div class="muted pull-left">用户管理</div>
+							<div class="muted pull-left">商家管理</div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="table-toolbar">
-									<div class="btn-group">
-									<a href="#myAlert" data-toggle="modal" class="btn btn-success">增加用户<i class="icon-plus icon-white"></i></a>
-									</div>
-									<div id="myAlert" class="modal hide">
-											<div class="modal-header">
-												<button data-dismiss="modal" class="close" type="button">&times;</button>
-												<h3>增加用户</h3>
-											</div>
-											<div class="modal-body" style="align-items:center">
-												 <div class="control-group">
-												 <form action="../user/register.action" method="post" id="myForm" enctype="multipart/form-data">
-														 <label class="control-label" for="focusedInput">昵称:</label>
-													<input class="input-xlarge focused" name="uNickname"
-														type="text" value="">                                       
-														 <label class="control-label" for="focusedInput">金额:</label>
-													<input class="input-xlarge focused" name="uAccount"
-														type="text" value="">
-														 <label class="control-label" for="focusedInput">密码:</label>
-													<input class="input-xlarge focused" name="uPassword"
-														type="password" value="">
-														 <br/> 上传头像:<br/><input type="file" name="file"/>  
-														  </form>
-														 
-                                                  </div>
-                                                
-											</div>
-											<div class="modal-footer">
-												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="addUser()">添加</a>
-												<a data-dismiss="modal" class="btn" href="#">取消</a>
-											</div>
-										</div>
 										
-										<div id="myUpdateAlert" class="modal hide">
-											<div class="modal-header">
-												<button data-dismiss="modal" class="close" type="button">&times;</button>
-												<h3>修改用户</h3>
-											</div>
-											<div class="modal-body" style="align-items:center">
-												 <div class="control-group">
-												 <form action="../user/update.action" method="post" id="myUpdateForm" enctype="multipart/form-data">
-												     <input style="display:none"  type="text" id="updateuId" name="uId" value="001"/>		
-														 <label class="control-label" for="focusedInput">昵称:</label>
-													<input class="input-xlarge focused" name="uNickname" id="uNickname"
-														type="text" value="">                                       
-														 <label class="control-label" for="focusedInput">金额:</label>
-													<input class="input-xlarge focused" name="uAccount" id="uAccount"
-														type="text" value="">
-														 <br/> 上传头像:<br/><input type="file" name="file"/>  
-														  </form>
-														 
-                                                  </div>
-                                                
-											</div>
-											<div class="modal-footer">
-												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="modifyUser()">添加</a>
-												<a data-dismiss="modal" class="btn" href="#">取消</a>
-											</div>
-										</div>
-										
-									<div class="btn-group pull-right">
-										<button data-toggle="dropdown" class="btn dropdown-toggle">
-											工具<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Print</a></li>
-											<li><a href="#">Save as PDF</a></li>
-											<li><a href="#">Export to Excel</a></li>
-										</ul>
-									</div>
 								</div>
 
 								<table cellpadding="0" cellspacing="0" border="0"
@@ -174,7 +136,7 @@
 											<td  style="text-align:center;vertical-align:middle;">user_00001</td>
 											<td  style="text-align:center;vertical-align:middle;">Webkit</td>
 											<td  style="text-align:center;vertical-align:middle;">312.8</td>
-											<td  style="text-align:center;vertical-align:middle;"><a href="#myUpdateAlert"  onclick=getUId(this) uId="123343" uNickname="" uAccount="" data-toggle="modal">修改</a>&nbsp&nbsp&nbsp<a>删除</a></td>
+											<td  style="text-align:center;vertical-align:middle;"><a>修改</a>&nbsp&nbsp&nbsp<a>删除</a></td>
 											
 										</tr>
 										<tr class="gradeA">
@@ -257,15 +219,15 @@
 			</div>
 		</div>
 		<hr>
-		<footer>
+			<footer>
 			<p>
-				&copy; Vincent Gabriel 2013 - More Templates <a
-					href="http://www.cssmoban.com/" target="_blank" title="cssmoban">cssmoban</a>
+				&copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
+					href="https://github.com/wap2017/Meituan.git" target="_blank" title="访问博客">github入口</a>
 		</footer>
 	</div>
 	<!--/.fluid-container-->
 
-    <script src="vendors/jquery-1.9.1.js"></script>
+
     <script type="text/javascript">
       function addUser()
       {
@@ -274,36 +236,35 @@
     	 
       }
       
-      function modifyUser()
-      {
-    	 
-    	  document.getElementById('myUpdateForm').submit();
-    	 
-      }
-      
-      
-    	  
-     function getUId(e){
-    		     var a=e.getAttribute("uId");
-    		     var b=e.getAttribute("uNickname");
-    		     var c=e.getAttribute("uAccount");
-    		     $("#updateuId").attr("value",a);
-    		     $("#uNickname").attr("value",b);
-    		     $("#uAccount").attr("value",c);
-    		     
-     }
-    	  
-      
       
       
     </script>
+	<script src="vendors/jquery-1.9.1.js"></script>
 	<script type="text/javascript">
-  	 $(function() {
-		 find();
+	function updateBusiness(){
+		$("#myUpdateForm").submit();
+	}
+	
+	function show(e)
+	{
+		     $("#bId").attr("value",e.getAttribute("bId"));
+		     $("#bShopname").attr("value",e.getAttribute("bShopname"));
+		     $("#sStatetype").attr("value",e.getAttribute("sStatetype"));
+		     $("#sResponsible").attr("value",e.getAttribute("sResponsible"));
+		     $("#sTelephone").attr("value",e.getAttribute("sTelephone"));
+		     $("#sAddress").attr("value",e.getAttribute("sAddress"));
+		     $("#sHours").attr("value",e.getAttribute("sHours"));
+		
+	}
+	
+    </script>
+	<script type="text/javascript">
+  	$(function() {
+			find();
 		});
 		function find() {
 			$.ajax({
-						url : "../user/findAll.action",
+						url : "../business/findAll.action",
 						type : "GET",
 						async: false,   // 太关键了，学习了，同步和异步的参数
 						contentType : "application/json;charset=UTF-8",
@@ -313,36 +274,46 @@
 							$("#example2")
 									.html(
 											"<table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='example2'>"
-								+"<thead><tr><th style='text-align:center;vertical-align:middle;'>头像</th><th style='text-align:center;vertical-align:middle;'>用户id</th>"								
-								+"<th style='text-align:center;vertical-align:middle;'>昵称</th>"
-								+"	<th style='text-align:center;vertical-align:middle;'>剩余金额</th>"
-								+"	<th style='text-align:center;vertical-align:middle;'>操作</th></tr></thead>");
+								+"<thead><tr>"
+								+"<th style='text-align:center;vertical-align:middle;'>商家名称</th>"								
+								+"<th style='text-align:center;vertical-align:middle;'>营业状态</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>负责人</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>店铺号码</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>地址</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>营业时间</th>"
+								+"<th style='text-align:center;vertical-align:middle;'>操作</th></tr></thead>");
 
 							$(data).each(
 											function() {
 												let
 												tr = $("<tr class='odd gradeX'></tr>");
 												let
-												td_uPicture = $("<td style='text-align:center;vertical-align:middle;' >"
-														+ "<img src=../users/"+this.uPicture+" height='80dp' width='80dp'  style='border-radius: 50px;' />"+
-														+ "</td>")
+												td_bName= $("<td style='text-align:center;vertical-align:middle;'>" + this.bShopname
+														+ "</td>");
 												let
-												td_uId = $("<td style='text-align:center;vertical-align:middle;'>" + this.uId
+												td_bState = $("<td style='text-align:center;vertical-align:middle;'>" + this.sType
 														+ "</td>");
 												;
 												let
-												td_uNickname = $("<td style='text-align:center;vertical-align:middle;'>"
-														+ this.uNickname
+												td_bResponsible = $("<td style='text-align:center;vertical-align:middle;'>"
+														+ this.sResponsible
 														+ "</td>");
 												let
-												td_uAccount = $("<td style='text-align:center;vertical-align:middle;'>" + this.uAccount
+												td_bPhone = $("<td style='text-align:center;vertical-align:middle;'>" + this.sTelephone
 														+ "</td>");
-												let td_op=$("<td  style='text-align:center;vertical-align:middle;'><a  href='#myUpdateAlert'  onclick=getUId(this) uId="+this.uId+" uNickname="+ this.uNickname+" uAccount="+this.uAccount+" data-toggle='modal'>修改</a>&nbsp&nbsp&nbsp<a href='../user/delUser.action?uId="+this.uId+"' >删除</a></td>");
+												
+												let
+												td_bAddress = $("<td style='text-align:center;vertical-align:middle;'>" +this.sProvince +this.sCity+this.sAddress
+														+ "</td>");
+												let
+												td_bTour = $("<td style='text-align:center;vertical-align:middle;'>" + this.sHours
+														+ "</td>");
+												let td_op=$("<td  style='text-align:center;vertical-align:middle;'><a  bId="+this.bId+" bShopname="+this.bShopname+" sStatetype="+this.sStatetype+" sResponsible="+this.sResponsible+" sTelephone="+this.sTelephone+" sAddress="+this.sAddress+" sHours="+this.sHours+" href='#myUpdateAlert' data-toggle='modal' onclick=show(this) >修改</a>&nbsp&nbsp&nbsp<a href='../business/delBusiness.action?bId="+this.bId+"' >删除</a></td>");
 
 												$(tr).append.call($(tr),
-														td_uPicture,td_uId, 
-														td_uNickname, td_uAccount,
-														td_op);
+														td_bName,td_bState, 
+														td_bResponsible, td_bPhone,td_bAddress,
+														td_bTour,td_op);
 
 												$("#example2").append(tr);
 

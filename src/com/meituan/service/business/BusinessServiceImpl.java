@@ -51,9 +51,10 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public int reject(String bId) {
+	public int reject(String bId,String notReson) {
 		Business b=businessMapper.selectByPrimaryKey(bId);
 		b.setsStatetype("ря╬э╬Ь");
+		b.setsNotreason(notReson);
 		return businessMapper.updateByPrimaryKey(b);
 	}
 

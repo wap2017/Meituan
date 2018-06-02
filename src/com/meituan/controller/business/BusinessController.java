@@ -43,9 +43,9 @@ public class BusinessController {
 	 * 
 	 * @return
 	 */
-
+	@RequestMapping(value = "/count")
 	@ResponseBody
-	public int reject() {
+	public int count() {
 
 		return businessService.count();
 	}
@@ -56,8 +56,8 @@ public class BusinessController {
 	 * @return
 	 */
 	@RequestMapping("/reject")
-	public String reject(String bId) {
-		businessService.reject(bId);
+	public String reject(String regectBId,String sNotreason) {
+		businessService.reject(regectBId,sNotreason);
 		return "identification";
 	}
 

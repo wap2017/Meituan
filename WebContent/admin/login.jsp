@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin Login</title>
+  <meta charset="UTF-8">
+    <title>管理员登录</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -15,14 +18,14 @@
   <body id="login">
     <div class="container">
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
+      <form action="../admin/login.action" method="post" class="form-signin">
+        <h2 class="form-signin-heading">美团后台系统</h2>
+        <input name="aId" type="text" class="input-block-level" placeholder="Usernames">
+        <input name="psw" type="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me">记住密码
         </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-large btn-primary" type="submit">登录</button>
       </form>
 
     </div> <!-- /container -->
