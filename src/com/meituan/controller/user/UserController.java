@@ -25,6 +25,58 @@ public class UserController {
 
 	@Resource(name = "UserService")
 	private UserService userService;
+	
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(HttpServletRequest request,String uId, String uNickname, Double uAccount,
+			@RequestParam("file") MultipartFile file) {
+
+		  System.out.println(uId);
+		  System.out.println(uNickname);
+		  System.out.println(uAccount);
+		  
+		  User u=userService.findUser(uId);
+		  if(uAccount!=null)
+		   u.setuAccount(uAccount);
+		  if(uNickname!=null&&uNickname.trim()!="")
+		   u.setuNickname(uNickname);
+		  
+		  
+		  
+		String picture=u.getuPicture();
+		if (!file.isEmpty()) {
+			try {
+
+				String filePath = request.getSession().getServletContext().getRealPath("/") + "users/" + uId + "_"
+						+ file.getOriginalFilename();
+				picture=uId+"_"+file.getOriginalFilename();
+				// 转存文件
+				file.transferTo(new File(filePath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		u.setuPicture(picture);
+		userService.updateUser(u);
+		return "users";
+	}
+
+	
+	
+	/**
+	 * 找到所有的用户记录，一次返回，由前端进行分页
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/delUser")
+	public String delUser(Model model,String uId) {
+		System.out.println("uId="+uId);
+		 userService.delUser(uId);
+		 return "users";
+	}
+	
+	
 
 	/**
 	 * 找到所有的用户记录，一次返回，由前端进行分页
@@ -56,13 +108,13 @@ public class UserController {
 
 		UUID uid = UUID.randomUUID();
 		String str = (uid + "").replace("-", "");
+		String picture="default.jpg";
 		if (!file.isEmpty()) {
 			try {
 
 				String filePath = request.getSession().getServletContext().getRealPath("/") + "users/" + str + "_"
 						+ file.getOriginalFilename();
-				System.out.println(file.getOriginalFilename() + "abc");
-				System.out.println(filePath);
+				picture=str+"_"+file.getOriginalFilename();
 				// 转存文件
 				file.transferTo(new File(filePath));
 			} catch (Exception e) {
@@ -75,9 +127,9 @@ public class UserController {
 		u.setuAccount(uAccount);
 		u.setuPassword(uPassword);
 		u.setuIsban(0);
-		u.setuPicture(file.getOriginalFilename());
+		u.setuPicture(picture);
 		userService.registerUser(u);
-		return "tables";
+		return "users";
 	}
 
 	/**
@@ -122,7 +174,7 @@ public class UserController {
 			}
 		}
 		// 重定向
-		return "tables";
+		return "users";
 	}
 
 	@RequestMapping("/list")

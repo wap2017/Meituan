@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <base href="/Meituan/admin/" />
 <meta charset="UTF-8">
-<title>Tables</title>
+<title>美团后台管理系统</title>
 <!-- Bootstrap -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen">
@@ -40,51 +39,6 @@
 								<li><a tabindex="-1" href="login.html">Logout</a></li>
 							</ul></li>
 					</ul>
-					<ul class="nav">
-						<li class="active"><a href="#">主页</a></li>
-						<li class="dropdown"><a href="#" data-toggle="dropdown"
-							class="dropdown-toggle">设置<b class="caret"></b>
-
-						</a>
-							<ul class="dropdown-menu" id="menu1">
-								<li><a href="#">Tools <i class="icon-arrow-right"></i>
-
-								</a>
-									<ul class="dropdown-menu sub-menu">
-										<li><a href="#">Reports</a></li>
-										<li><a href="#">Logs</a></li>
-										<li><a href="#">Errors</a></li>
-									</ul></li>
-								<li><a href="#">SEO Settings</a></li>
-								<li><a href="#">Other Link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Other Link</a></li>
-								<li><a href="#">Other Link</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" role="button"
-							class="dropdown-toggle" data-toggle="dropdown">内容 <i
-								class="caret"></i>
-
-						</a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">Blog</a></li>
-								<li><a tabindex="-1" href="#">News</a></li>
-								<li><a tabindex="-1" href="#">Custom Pages</a></li>
-								<li><a tabindex="-1" href="#">Calendar</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">FAQ</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" role="button"
-							class="dropdown-toggle" data-toggle="dropdown">用户 <i
-								class="caret"></i>
-
-						</a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">User List</a></li>
-								<li><a tabindex="-1" href="#">Search</a></li>
-								<li><a tabindex="-1" href="#">Permissions</a></li>
-							</ul></li>
-					</ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
@@ -94,15 +48,17 @@
 		<div class="row-fluid">
 			<div class="span3" id="sidebar">
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-					<li><a href="index.html"><i class="icon-chevron-right"></i>
-							主页</a></li>
-					<li class="active"><a href="tables.html"><i
+					<li><a href="orders.html"><i class="icon-chevron-right"></i>
+							订单管理</a></li>
+					<li class="active"><a href="users.html"><i
 							class="icon-chevron-right"></i>用户管理</a></li>
-					<li><a href="#"><span
-							class="badge badge-success pull-right">812</span>商家管理</a></li>
-					<li><a href="#"><span class="badge badge-info pull-right">27</span>订单管理</a>
+					<li><a href="business.html"><i
+							class="icon-chevron-right"></i>商家管理</a></li>
+					<li><a href="identification.html"><i
+							class="icon-chevron-right"></i>认证管理</a>
 					</li>
-					<li><a href="#"><span class="badge badge-info pull-right">1,234</span>业绩管理</a>
+					<li><a href="#"><i
+							class="icon-chevron-right"></i>认证记录</a>
 					</li>
 					<li><a href="#"><span class="badge badge-info pull-right">2,221</span>反馈管理</a>
 					</li>
@@ -137,9 +93,6 @@
 												<h3>增加用户</h3>
 											</div>
 											<div class="modal-body" style="align-items:center">
-												<!-- <p>Lorem ipsum dolor sit amet...</p> -->
-												
-												<div >
 												 <div class="control-group">
 												 <form action="../user/register.action" method="post" id="myForm" enctype="multipart/form-data">
 														 <label class="control-label" for="focusedInput">昵称:</label>
@@ -155,11 +108,37 @@
 														  </form>
 														 
                                                   </div>
+                                                
+											</div>
+											<div class="modal-footer">
+												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="addUser()">添加</a>
+												<a data-dismiss="modal" class="btn" href="#">取消</a>
+											</div>
+										</div>
+										
+										<div id="myUpdateAlert" class="modal hide">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">&times;</button>
+												<h3>修改用户</h3>
+											</div>
+											<div class="modal-body" style="align-items:center">
+												 <div class="control-group">
+												 <form action="../user/update.action" method="post" id="myUpdateForm" enctype="multipart/form-data">
+												     <input style="display:none"  type="text" id="updateuId" name="uId" value="001"/>		
+														 <label class="control-label" for="focusedInput">昵称:</label>
+													<input class="input-xlarge focused" name="uNickname" id="uNickname"
+														type="text" value="">                                       
+														 <label class="control-label" for="focusedInput">金额:</label>
+													<input class="input-xlarge focused" name="uAccount" id="uAccount"
+														type="text" value="">
+														 <br/> 上传头像:<br/><input type="file" name="file"/>  
+														  </form>
+														 
                                                   </div>
                                                 
 											</div>
 											<div class="modal-footer">
-												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="document.getElementById('myForm').submit()">添加</a>
+												<a data-dismiss="modal" class="btn btn-primary" href="#" onclick="modifyUser()">添加</a>
 												<a data-dismiss="modal" class="btn" href="#">取消</a>
 											</div>
 										</div>
@@ -195,7 +174,7 @@
 											<td  style="text-align:center;vertical-align:middle;">user_00001</td>
 											<td  style="text-align:center;vertical-align:middle;">Webkit</td>
 											<td  style="text-align:center;vertical-align:middle;">312.8</td>
-											<td  style="text-align:center;vertical-align:middle;"><a>修改</a>&nbsp&nbsp&nbsp<a>删除</a></td>
+											<td  style="text-align:center;vertical-align:middle;"><a href="#myUpdateAlert"  onclick=getUId(this) uId="123343" uNickname="" uAccount="" data-toggle="modal">修改</a>&nbsp&nbsp&nbsp<a>删除</a></td>
 											
 										</tr>
 										<tr class="gradeA">
@@ -286,13 +265,42 @@
 	</div>
 	<!--/.fluid-container-->
 
-
-
-	<script src="vendors/jquery-1.9.1.js"></script>
+    <script src="vendors/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+      function addUser()
+      {
+    	 
+    	  document.getElementById('myForm').submit();
+    	 
+      }
+      
+      function modifyUser()
+      {
+    	 
+    	  document.getElementById('myUpdateForm').submit();
+    	 
+      }
+      
+      
+    	  
+     function getUId(e){
+    		     var a=e.getAttribute("uId");
+    		     var b=e.getAttribute("uNickname");
+    		     var c=e.getAttribute("uAccount");
+    		     $("#updateuId").attr("value",a);
+    		     $("#uNickname").attr("value",b);
+    		     $("#uAccount").attr("value",c);
+    		     
+     }
+    	  
+      
+      
+      
+    </script>
 	<script type="text/javascript">
-	//	$(function() {
-	//		find();
-	//	});
+  	 $(function() {
+		 find();
+		});
 		function find() {
 			$.ajax({
 						url : "../user/findAll.action",
@@ -301,43 +309,40 @@
 						contentType : "application/json;charset=UTF-8",
 						data : {},
 						success : function(data) {
-							<!--
+						
 							$("#example2")
 									.html(
-											"<table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='example2'> <thead><tr><th>用户ID</th><th>头像</th> <th>昵称</th><th>性别</th><th>地址</th><th>是否禁止</th></tr></thead><tbody>");
-							-->
+											"<table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='example2'>"
+								+"<thead><tr><th style='text-align:center;vertical-align:middle;'>头像</th><th style='text-align:center;vertical-align:middle;'>用户id</th>"								
+								+"<th style='text-align:center;vertical-align:middle;'>昵称</th>"
+								+"	<th style='text-align:center;vertical-align:middle;'>剩余金额</th>"
+								+"	<th style='text-align:center;vertical-align:middle;'>操作</th></tr></thead>");
 
 							$(data).each(
 											function() {
-
 												let
 												tr = $("<tr class='odd gradeX'></tr>");
 												let
-												td_uId = $("<td>" + this.uId
-														+ "</td>");
+												td_uPicture = $("<td style='text-align:center;vertical-align:middle;' >"
+														+ "<img src=../users/"+this.uPicture+" height='80dp' width='80dp'  style='border-radius: 50px;' />"+
+														+ "</td>")
 												let
-												td_uPicture = $("<td>"
-														+ this.uPicture
+												td_uId = $("<td style='text-align:center;vertical-align:middle;'>" + this.uId
 														+ "</td>");
+												;
 												let
-												td_uNickname = $("<td>"
+												td_uNickname = $("<td style='text-align:center;vertical-align:middle;'>"
 														+ this.uNickname
 														+ "</td>");
 												let
-												td_uSex = $("<td>" + this.uSex
+												td_uAccount = $("<td style='text-align:center;vertical-align:middle;'>" + this.uAccount
 														+ "</td>");
-												let
-												td_uSchool = $("<td class='center'>"
-														+ this.uAddress
-														+ "</td>");
-												let
-												td_uIsban = $("<td class='center'>"
-														+ this.uIsban + "</td>");
+												let td_op=$("<td  style='text-align:center;vertical-align:middle;'><a  href='#myUpdateAlert'  onclick=getUId(this) uId="+this.uId+" uNickname="+ this.uNickname+" uAccount="+this.uAccount+" data-toggle='modal'>修改</a>&nbsp&nbsp&nbsp<a href='../user/delUser.action?uId="+this.uId+"' >删除</a></td>");
 
 												$(tr).append.call($(tr),
-														td_uId, td_uPicture,
-														td_uNickname, td_uSex,
-														td_uSchool, td_uIsban);
+														td_uPicture,td_uId, 
+														td_uNickname, td_uAccount,
+														td_op);
 
 												$("#example2").append(tr);
 
