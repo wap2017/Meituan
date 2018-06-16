@@ -1,36 +1,45 @@
-.clear{
-	clear:both;
+a {
+	text-decoration: none;
 }
 
+#menu1 a:visited {
+	text-decoration: none;
+	color: #08c
+}
 
-#frame{
-			/*border:1px solid #85E6C7;*/
-			width:100%;
-			height:auto;
-			/*background-color: #F7F7F7;*/
-		}
-#left{
+.clear {
+	clear: both;
+}
+
+#frame {
+	/*border:1px solid #85E6C7;*/
+	width: 100%;
+	height: auto;
+	/*background-color: #F7F7F7;*/
+}
+
+#left {
 	/*border:1px solid #CD0100;*/
-	width:97%;
-	height:auto;
-	float:left; 
+	width: 97%;
+	height: auto;
+	float: left;
 	background-color: #F7F7F7;
 }
 
-#menu{
+#menu {
 	/*border:1px solid #130210;*/
-	width:100%;
-	height:100px;
-	background-color:#85E6C7;
+	width: 100%;
+	height: 100px;
+	background-color: #CAEFFB;
 }
 
-#search{
+#search {
 	/*border:1px solid #E6E6E6;*/
-	width:90%;
-	height:100px;
-	margin:0px 68px 10px 68px;
-	background-color:#FFFFFF; 
-	position:relative;
+	width: 90%;
+	height: 100px;
+	margin: 0px 68px 10px 68px;
+	background-color: #FFFFFF;
+	position: relative;
 }
 
 /*#shortcut{
@@ -40,137 +49,134 @@
 	margin:0px 68px 10px 68px;
 	 background-color:#504D53; 
 }*/
-
-#shoplist{
+#shoplist {
 	/*border:1px solid #E6E6E6;*/
-	width:90%;
-	height:400px;
-	margin:0px 68px 10px 68px;
-	background-color:#FFFFFF; 
+	width: 90%;
+	height: 400px;
+	margin: 0px 68px 10px 68px;
+	background-color: #FFFFFF;
 }
 
-#right{
+#right {
 	/*border:1px solid #CC0011;*/
-	width:2.66%;
-	height:641px;
-	right:7px;			
-	position:fixed; 
-	background-color:#504D53;
+	width: 2.66%;
+	height: 641px;
+	right: 7px;
+	position: fixed;
+	background-color: #504D53;
 }
 
-#shopcart{
-/*	border:1px solid #AB0230;*/
-	width:97%;
-	height:16%;
-	margin:180px 0px 20px 0px;
+#shopcart {
+	/*	border:1px solid #AB0230;*/
+	width: 97%;
+	height: 16%;
+	margin: 180px 0px 20px 0px;
 	/* background-color:#504D53;  */
 }
 
-#line{
+#line {
 	/*border:1px solid #AB0230;*/
-	width:70%;
-	margin-left:5px;
-	height:0px;
+	width: 70%;
+	margin-left: 5px;
+	height: 0px;
 }
 
-#message{
+#message {
 	/*border:1px solid #BD1005;*/
-	width:97%;
-	height:5%;
-	margin-top:20px;
+	width: 97%;
+	height: 5%;
+	margin-top: 20px;
 	/* background-color:#504D53; */
 }
-.menu1{
-	 width:250px; 
-	 height:100px; 
-	 float:left;
-}
-.font{
-	display:block;
-	padding-top:40px;
-	padding-left:100px;
-	color:#ffffff
-	
-}
-#searchinput{
-	width:250px;
-	height:30px;
-	padding-right:0px;
-	display:block;
-	float:right;
-	margin-top:10px;
+
+.menu1 {
+	width: 250px;
+	height: 100px;
+	float: left;
 }
 
-#searchpic{
-	width:30px; 
-	height:30px;
-	display:block;
-	position:absolute;	
-	right:0px;
-	margin-top:-10px;
-	margin-right:2px;
-} 
-
-.shop{
-	/*border:1px solid #F2D000;*/
-	width:24.8%;
-	height:200px;
-	float:left;
+.font {
+	display: block;
+	padding-top: 40px;
+	padding-left: 100px;
+	color: #fff
 }
 
-.shoplogo{
+#searchinput {
+	width: 250px;
+	height: 30px;
+	padding-right: 0px;
+	display: block;
+	float: right;
+	margin-top: 10px;
+}
+
+#searchpic {
+	width: 30px;
+	height: 30px;
+	display: block;
+	position: absolute;
+	right: 0px;
+	margin-top: -10px;
+	margin-right: 2px;
+}
+
+.shop {
+	border:1px solid #E6E6E6;
+	width: 24.8%;
+	height: 200px;
+	float: left;
+}
+
+.shoplogo {
 	/*border:1px solid #E6E6E6;*/
-	width:150px; 
-	height:150px;
-	float:left;
-	margin:10px 10px;
+	width: 150px;
+	height: 150px;
+	float: left;
+	margin: 10px 10px;
 }
 
-.shopintro{
-	margin:50px 0px 10px 5px;
-	height:150px;
+.shopintro {
+	margin: 50px 0px 10px 5px;
+	height: 150px;
 	/*padding-left: 15px;*/
-	
 }
 
-#seeMore{
+#seeMore {
 	/*border:1px solid #E6E6E6;*/
-	width:100%;
-	height:50px;
-	float:left;
-	background-color:#FFFFFF; 
+	width: 100%;
+	height: 50px;
+	float: left;
+	background-color: #FFFFFF;
 }
 
-
-
-.intro1{
+.intro1 {
 	font-size: 20px;
 	font-weight: bold;
-	
 }
 
-#shopcartpage{
+#shopcartpage {
 	width: 300px;
 	height: 628px;
-	position:fixed; 
+	position: fixed;
 	right: 45px;
 	/*border:1px solid #CC0011;*/
-	background-color:#E6E6E6; 
-	display:none;
+	background-color: #E6E6E6;
+	display: none;
 }
 
-#messagepage{
+#messagepage {
 	width: 300px;
 	height: 628px;
-	position:fixed; 
+	position: fixed;
 	right: 45px;
 	/*border:1px solid #CC0011;*/
-	background-color:#E6E6E6; 
-	display:none;
+	background-color: #E6E6E6;
+	display: none;
 }
 
-#logo{
-	width:250px;
+#logo {
+	width: 250px;
 	height: 100px;
 	float: left;
 }

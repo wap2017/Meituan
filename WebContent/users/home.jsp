@@ -33,23 +33,23 @@
 				<div id="menu">
 					<!-- logo -->
 					<div id="logo">
-						<img alt="平台Logo" src="./images/logo2.jpg"  style="width:250px; height:100px; float:left">
+						<img alt="平台Logo" src="./images/logo1.png"  style="width:250px; height:100px; float:left">
 					</div>
 					<!-- 首页  -->
 					<div class="menu1" style="width:250px; height:100px; float:left">
-						<span class="font">首页</span>
+						<span class="font"><a href="home.jsp">首页</a></span>
 					</div>
 					<!-- 我的订单 -->
 					<div class="menu1" style="width:250px; height:100px; float:left">
-						<span class="font">我的订单</span>
+						<a href="inmonth.jsp"><span class="font">我的订单</span></a>
 					</div>
 					<!-- 个人中心 -->
 					<div class="menu1" style="width:250px; height:100px; float:left">
-						<span class="font">个人中心</span>
+						<a href="mine.jsp"><span class="font">个人中心</span></a>
 					</div>
 					<!-- 退出登录 -->
 					<div class="menu1">
-						<span class="font">退出登录</span>
+						<a href="login.jsp"><span class="font">退出登录</span></a>
 					</div>
 					<!--<div class="clear" style="clear:both;"></div>-->
 				</div>
@@ -64,8 +64,10 @@
 				<!-- 商家列表 -->
 				<div id="shoplist">
 					<div class="shop">
+					<a href="shop.jsp" style="width:100%;color:#000">
 						<!-- 商家logo -->
 						<div class="shoplogo">
+							
 							<img alt="商店logo" src="./images/商店logo.png" width="150px" height="150px">
 						</div>
 						<!-- 商家说明  -->
@@ -73,7 +75,9 @@
 							<span class="intro1">港堡汉堡</span><br /><br />
 							<span>配送费￥2</span><br /><br />
 							<span>43分钟送达</span>	
+							
 						</div>
+						</a>
 					</div>
 					<div class="shop">
 						<!-- 商家logo -->

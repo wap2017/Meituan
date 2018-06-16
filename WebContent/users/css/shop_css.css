@@ -1,97 +1,105 @@
-.clear{
-	clear:both;
+a {
+	text-decoration: none;
 }
 
-
-#menu{
-	border:1px solid #130210;
-	width:100%;
-	height:50px;
-	background-color:#85E6C7;
+a:visited {
+	text-decoration: none;
+	color:#08c
 }
 
-#logo{
-	 width:250px; 
-	 height:50px; 
-	 float:left;
-}
-.menu1{
-	 width:250px; 
-	 height:50px; 
-	 float:left;
+.clear {
+	clear: both;
 }
 
-.font{
-	display:block;
-	padding-top:20px;
-	padding-left:100px;
-	color:#ffffff
+#menu {
+	border: 1px solid #130210;
+	width: 100%;
+	height: 50px;
+	background-color: #CAEFFB;
 }
 
-#shopframe{
+#logo {
+	width: 250px;
+	height: 50px;
+	float: left;
+}
+
+.menu1 {
+	width: 250px;
+	height: 50px;
+	float: left;
+}
+
+.font {
+	display: block;
+	padding-top: 20px;
+	padding-left: 100px;
+	color: #ffffff
+}
+
+#shopframe {
 	width: 1352px;
 	height: auto;
 }
 
-#head{
+#head {
 	width: 1352px;
 	height: 150px;
 	border: 1px solid #BD1005;
 	background-image: url(../images/shopheadbg.png);
-
 }
 
-#cover{
+#cover {
 	width: 1352px;
 	height: 150px;
 	background-color: #000000;
 	opacity: 0.6;
-	position:relative;
-
+	position: relative;
 }
-.shoplogo{
+
+.shoplogo {
 	/*border:1px solid #E6E6E6;*/
-	width:17%; 
-	height:150px;
-	float:left;
+	width: 17%;
+	height: 150px;
+	float: left;
 	/*margin:10px 10px;*/
 	/*position:absoulte;*/
 	z-index: 999999;
 	opacity: 1;
 }
 
-.shoplogo img{
-	margin:20px 20px 20px 100px;
-	border-radius:150px;
+.shoplogo img {
+	margin: 20px 20px 20px 100px;
+	border-radius: 150px;
 	width: 100px;
 	height: 100px;
-	box-shadow:0 0 10px #333;/*阴影效果*/
+	box-shadow: 0 0 10px #333; /*阴影效果*/
 	opacity: 1;
 }
 
-.shopintro{
+.shopintro {
 	width: 40%;
-	height:120px;
-	float:left;
-	margin-top:50px ;
+	height: 120px;
+	float: left;
+	margin-top: 50px;
 	/*position:absoulte;
 	z-index: 999999;*/
 }
-.intro1{
+
+.intro1 {
 	font-size: 20px;
 	font-weight: bold;
 	color: #FFFFFF;
 }
 
-.shopintro1{
-	float:left;
-	margin-top:40px ;	
+.shopintro1 {
+	float: left;
+	margin-top: 40px;
 	width: 15%;
 }
 
-.intro2{
+.intro2 {
 	font-size: 16px;
 	font-weight: bold;
 	color: #FFFFFF;
 }
-
