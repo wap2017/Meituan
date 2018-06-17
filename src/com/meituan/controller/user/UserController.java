@@ -207,18 +207,19 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/register1", method = RequestMethod.POST)
 	
-	public @ResponseBody String register1(HttpServletRequest request, @RequestBody Map<String,String> map) {
+	public @ResponseBody String register1(@RequestBody Map<String,String> map) {
 
+		
+		String uNickname = map.get("uNickname");
+		List<User> list = userService.findUserByUNickname(uNickname);
+		//先判断该账户名是否已经被注册
+		if(!list.isEmpty()&&list!=null) {//存在
+			return "该用户名已经存在";
+		}
 		UUID uid = UUID.randomUUID();
 		String str = (uid + "").replace("-", "");
 		User u = new User();
 		u.setuId(str);
-		String uNickname = map.get("uNickname");
-		
-		//先判断该账户名是否已经被注册
-		if(userService.findUserByUNickname(uNickname)!=0) {//存在
-			return "false";
-		}
 		u.setuNickname(uNickname);
 		u.setuAccount(0.0);
 		u.setuPassword(map.get("pwd"));
@@ -231,18 +232,26 @@ public class UserController {
 	
 	
 	/**
-	 * 登录页面
-	 * @param uWechatId
+	 * 登录
 	 * @param request
-	 * @return
+	 * @param map
+	 * @return 返回提示语，将用户放在request中
 	 */
-	/*@RequestMapping(value="/login",method = RequestMethod.POST) 
-	public String login(@RequestParam("uWechatId")String uWechatId,HttpSession session){
-		//
-		User user = userService.selectUserByWechatId(uWechatId);
-		application.setAttribute("user", user);
-		System.out.println(user);
-		return "111";//登录完应该跳到首页
-	}*/
+	@RequestMapping(value="/login",method = RequestMethod.POST) 
+	public @ResponseBody String login(HttpServletRequest request, @RequestBody Map<String,String> map){
+		String uNickname = map.get("uNickname");
+		List<User> list = userService.findUserByUNickname(uNickname);
+		//先判断该账户名是否已经被注册
+		if(!list.isEmpty()&&list!=null) {//存在
+			//判断密码是否相同
+			String uPassword = map.get("pwd");
+			if(list.get(0).getuPassword().equals(uPassword)) {
+				request.setAttribute("user", list.get(0));//放在request中
+				return "success";
+			}
+			return "密码错误";
+		}
+		return "账号未被注册";
+	}
 
 }

@@ -93,7 +93,7 @@ label.error {
 			<img alt="平台Logo" src="./images/logo.png"
 				style="width: 250px; height: 140px"> <br />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="font ">登录</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="login.jsp" style="color:#000;text-decoration: none"><span class="font ">登录</span></a>
 			&nbsp;&nbsp;&nbsp;&nbsp; <span>|</span> &nbsp;&nbsp;&nbsp; <span
 				class="font active">注册</span> <br /> <br />
 
@@ -113,9 +113,9 @@ label.error {
 			</form>
 
 		</div>
-		<div style="width:auto;height:auto">
-			<footer style="position: fixed; bottom:0px; left:0px;">
-			<span> &copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
+		<div style="width: auto; height: auto">
+			<footer style="position: fixed; bottom:0px; left:0px;"> <span>
+				&copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
 				href="https://github.com/wap2017/Meituan.git" target="_blank"
 				title="访问博客">github入口</a>
 			</span> </footer>
@@ -137,20 +137,21 @@ label.error {
             }
             else {
             	var data ={
-            			uNickname,pwd
-            	} 
+            			"uNickname":uNickname,
+            			"pwd":pwd
+            			}
                 $.ajax({
                     type : 'post',
                     url : "../user/register1.action",
-                    contentType:'application/json',
+                    contentType:'application/json;charset=UTF-8',
                     data:JSON.stringify(data),
                     success : function(msg) {
                         if('success'==msg){
                         	alert("注册成功");
                             location.href='login.jsp' ; 
                         }else{
-                            /* $('#msg').html(msg); */
-                            alert('注册失败');
+                           /*  $('#msg').html(msg); */
+                            alert(msg);
                         }
                     }
                 });

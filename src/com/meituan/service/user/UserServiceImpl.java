@@ -88,16 +88,12 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public int findUserByUNickname(String uNickname) {
+	public List<User> findUserByUNickname(String uNickname) {
 		UserExample example = new UserExample();
 		Criteria cr = example.createCriteria();
 		cr.andUNicknameEqualTo(uNickname);
-		List<User> list = userMapper.selectByExample(example);
-		System.out.println(list.isEmpty()||list==null);
-		if(list.isEmpty()||list==null) {
-			return 0;
-		}
-		return 1;
+		return userMapper.selectByExample(example);
+	
 	}
 
 
