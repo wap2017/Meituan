@@ -2,13 +2,17 @@ package com.meituan.controller.user;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -92,7 +96,7 @@ public class UserController {
 	}
 
 	/**
-	 * 注册用户
+	 * 注册用户(管理员端的添加用户)
 	 * 
 	 * @param model
 	 * @param uPicture
@@ -189,5 +193,56 @@ public class UserController {
 		User user = userService.findUserById(uId);
 		return user;
 	}
+	
+	/**
+	 * 注册用户(用户端)
+	 * 
+	 * @param model
+	 * @param uPicture
+	 * @param uNickname
+	 * @param uSex
+	 * @param uAddress
+	 * @param uIsban
+	 * @return
+	 */
+	@RequestMapping(value = "/register1", method = RequestMethod.POST)
+	
+	public @ResponseBody String register1(HttpServletRequest request, @RequestBody Map<String,String> map) {
+
+		UUID uid = UUID.randomUUID();
+		String str = (uid + "").replace("-", "");
+		User u = new User();
+		u.setuId(str);
+		String uNickname = map.get("uNickname");
+		
+		//先判断该账户名是否已经被注册
+		if(userService.findUserByUNickname(uNickname)!=0) {//存在
+			return "false";
+		}
+		u.setuNickname(uNickname);
+		u.setuAccount(0.0);
+		u.setuPassword(map.get("pwd"));
+		u.setuIsban(0);
+		u.setuPicture("default.jpg");
+		System.out.println(u);
+		userService.registerUser(u);
+		return "success";
+	}
+	
+	
+	/**
+	 * 登录页面
+	 * @param uWechatId
+	 * @param request
+	 * @return
+	 */
+	/*@RequestMapping(value="/login",method = RequestMethod.POST) 
+	public String login(@RequestParam("uWechatId")String uWechatId,HttpSession session){
+		//
+		User user = userService.selectUserByWechatId(uWechatId);
+		application.setAttribute("user", user);
+		System.out.println(user);
+		return "111";//登录完应该跳到首页
+	}*/
 
 }

@@ -26,7 +26,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.updateByPrimaryKey(u);
 	}
 	
-	
+	/**
+	 * 注册用户（管理员注册需要的信息比较多，用户端注册时只需要账号和密码）
+	 * @param user
+	 * @return
+	 */
 	@Override
 	public int registerUser(User user) {
 		return userMapper.insert(user);
@@ -76,6 +80,24 @@ public class UserServiceImpl implements UserService {
 		Criteria cr = example.createCriteria();
 		cr.andUIdEqualTo(user.getuId());
 		return userMapper.updateByExample(user, example);
+	}
+	
+	/**
+	 * 根据注册时用户的账号名查询该账号是否已经被注册
+	 * @param uNickname
+	 * @return
+	 */
+	@Override
+	public int findUserByUNickname(String uNickname) {
+		UserExample example = new UserExample();
+		Criteria cr = example.createCriteria();
+		cr.andUNicknameEqualTo(uNickname);
+		List<User> list = userMapper.selectByExample(example);
+		System.out.println(list.isEmpty()||list==null);
+		if(list.isEmpty()||list==null) {
+			return 0;
+		}
+		return 1;
 	}
 
 

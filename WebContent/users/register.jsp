@@ -29,9 +29,7 @@ label.error {
 
 .active {
 	/* border: 1px solid #79b7e7; */
-	background: #f5f8f9
-		
-		repeat-x;
+	background: #f5f8f9 repeat-x;
 	font-weight: bold;
 	color: #e17009
 }
@@ -45,13 +43,12 @@ label.error {
 	$(function() {
 		$("#register").validate({
 			rules : {
-				username : {
+				uNickname : {
 					required : true,
 					minlength : 6
 				},
 				password : {
 					required : true,
-					digits : true,
 					minlength : 6
 				},
 				repassword : {
@@ -61,7 +58,7 @@ label.error {
 
 			},
 			messages : {
-				username : {
+				uNickname : {
 					required : "用户名不能为空",
 					minlength : "用户名不得少于6位"
 				},
@@ -82,46 +79,85 @@ label.error {
 			}
 		});
 		
-		
+
 	});
 </script>
 </head>
 <body>
-	<div id="main" style="width: 100%; height: 400px;">
-		<div id="left" style="float: left; width: 40%; height: 100%;">
+	<div id="main" style="width: auto; height: auto;">
+		<div id="left" style="float: left; width: 300px; height: 100%;">
 			<img alt="插图" src="./images/登录页面插图.jpg"
 				style="width: 250px; height: 400px">
 		</div>
-		<div id="right" style="float: left; width: 60%; height: 100%;"></div>
-		<img alt="平台Logo" src="./images/logo.png"
-			style="width: 250px; height: 140px"> <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="font ">登录</span>
-		&nbsp;&nbsp;&nbsp;&nbsp; <span>|</span> &nbsp;&nbsp;&nbsp; <span
-			class="font active">注册</span> <br /> <br />
-		
-		
-		<form id="register" action="#" method="get">
-			<input type="text" name="username" placeholder="账号"
-				style="width: 250px; height: 30px"> <br /> <br /> <input
-				type="password" name="password" placeholder="密码"
-				style="width: 250px; height: 30px"> <br /> 
-			<br/>
-			<input
-				type="password" name="repassword" placeholder="确认密码"
-				style="width: 250px; height: 30px"> <br /> <br/><br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<div id="right" style="float: left; width: 500px; height: 100%;">
+			<img alt="平台Logo" src="./images/logo.png"
+				style="width: 250px; height: 140px"> <br />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			 <input type="submit" value="注册" color="#fff"
-				bgcolor="#4cd964"
-				style="width: 100px; border-radius: 20px; background-color: #85E6C7">
-			 
-		</form>
-		
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="font ">登录</span>
+			&nbsp;&nbsp;&nbsp;&nbsp; <span>|</span> &nbsp;&nbsp;&nbsp; <span
+				class="font active">注册</span> <br /> <br />
 
+
+			<form id="register" action="../user/register1.action" method="post">
+				<input type="text" name="uNickname" placeholder="账号"
+					style="width: 250px; height: 30px"> <br /> <br /> <input
+					type="password" name="password" placeholder="密码"
+					style="width: 250px; height: 30px"> <br /> <br /> <input
+					type="password" name="repassword" placeholder="确认密码"
+					style="width: 250px; height: 30px"> <br /> <br /> <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+					value="注册" onclick="check()" color="#fff" bgcolor="#4cd964"
+					style="width: 100px; border-radius: 20px; background-color: #85E6C7">
+
+			</form>
+
+		</div>
+		<div style="width:auto;height:auto">
+			<footer style="position: fixed; bottom:0px; left:0px;">
+			<span> &copy;开发者:李旭锐&nbsp陈妙纯&nbsp周佩蓉&nbsp<a
+				href="https://github.com/wap2017/Meituan.git" target="_blank"
+				title="访问博客">github入口</a>
+			</span> </footer>
+		</div>
+		<div class="clear" style="clear: both;"></div>
 
 
 	</div>
-	<div class="clear" style="clear: both;"></div>
+	<script type="text/javascript">
+        function check() {
+            var uNickname = $.trim($('input[name=uNickname]').val());
+            var label = $('.error').val();
+            var pwd = $.trim($('input[name=password]').val());
+            if ("" == uNickname || "" == pwd) {
+                alert('用户名或者密码不能为空');
+            }
+            if(label!=""){
+            	alert('请填写正确的信息');
+            }
+            else {
+            	var data ={
+            			uNickname,pwd
+            	} 
+                $.ajax({
+                    type : 'post',
+                    url : "../user/register1.action",
+                    contentType:'application/json',
+                    data:JSON.stringify(data),
+                    success : function(msg) {
+                        if('success'==msg){
+                        	alert("注册成功");
+                            location.href='login.jsp' ; 
+                        }else{
+                            /* $('#msg').html(msg); */
+                            alert('注册失败');
+                        }
+                    }
+                });
+                  
+            }
+        }
+    </script>
+
 </body>
 </html>
