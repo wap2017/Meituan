@@ -37,6 +37,11 @@
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
+  <!-- 支持session scope的Spring bean -->
+  <!-- <listener>  
+     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
+  </listener>  --> 
+  
   <!-- 3，配置SpringMvc中的前端控制器 -->
   <servlet>
   	<servlet-name>meituan</servlet-name>

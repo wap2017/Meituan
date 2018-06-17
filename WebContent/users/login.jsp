@@ -61,6 +61,8 @@ label.error {
 				password : {
 					required : "密码不能为空",
 					minlength : "密码不得少于6位"
+				}
+			
 			},
 			errorElement : "label", //用来创建错误提示信息标签,validate插件默认的就是label
 			success : function(label) { //验证成功后的执行的回调函数
@@ -68,7 +70,8 @@ label.error {
 				label.text(" ") //清空错误提示消息
 				.addClass("success"); //加上自定义的success类
 			}
-		});
+		
+	    });
 
 	});
 </script>

@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -225,7 +224,6 @@ public class UserController {
 		u.setuPassword(map.get("pwd"));
 		u.setuIsban(0);
 		u.setuPicture("default.jpg");
-		System.out.println(u);
 		userService.registerUser(u);
 		return "success";
 	}
@@ -238,7 +236,7 @@ public class UserController {
 	 * @return 返回提示语，将用户放在request中
 	 */
 	@RequestMapping(value="/login",method = RequestMethod.POST) 
-	public @ResponseBody String login(HttpServletRequest request, @RequestBody Map<String,String> map){
+	public @ResponseBody String login(HttpSession session, @RequestBody Map<String,String> map){
 		String uNickname = map.get("uNickname");
 		List<User> list = userService.findUserByUNickname(uNickname);
 		//先判断该账户名是否已经被注册
@@ -246,12 +244,22 @@ public class UserController {
 			//判断密码是否相同
 			String uPassword = map.get("pwd");
 			if(list.get(0).getuPassword().equals(uPassword)) {
-				request.setAttribute("user", list.get(0));//放在request中
+				session.setAttribute("user", list.get(0));//放在request中
+				System.out.println(session.getAttribute("user"));
 				return "success";
 			}
 			return "密码错误";
 		}
 		return "账号未被注册";
 	}
+	
+	@RequestMapping(value="/loginout")
+	public String loginout(HttpSession session){
+		session.invalidate();
+		return "redirect:/users/login.jsp";
+	}
+	
+	
+	
 
 }

@@ -30,7 +30,7 @@
 		</div>
 		<!-- 退出登录 -->
 		<div class="menu1">
-			<a href="login.jsp"><span class="font">退出登录</span></a>
+			<a href="#"><span class="font">退出登录</span></a>
 		</div>
 		</header>
 		<div class="container">
@@ -61,6 +61,9 @@
 					<li><a href="private.jsp"> <i class="icon-list"></i> 个人资料
 					</a></li>
 					<li><a href="address.jsp"> <i class="icon-gift"></i> 地址管理
+					</a></li>
+					<li class="divider"></li>
+					<li><a href="../user/loginout.action"> <i class="icon-off"></i> 退出登录
 					</a></li>
 				</ul>
 				</nav>
@@ -136,7 +139,7 @@
 		</div>
 
 	</div>
-
+	
 
 
 </body>

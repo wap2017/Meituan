@@ -43,7 +43,7 @@
 		</div>
 		<!-- 首页  -->
 		<div class="menu1" style="width: 250px; height: 50px; float: left">
-			<a href="home.jsp"><span class="font">首页</span></a>
+			<a href="home.jsp" style="color:#08c"><span class="font">首页</span></a>
 		</div>
 		<!-- 我的订单 -->
 		<div class="menu1" style="width: 250px; height: 50px; float: left">
@@ -55,7 +55,7 @@
 		</div>
 		<!-- 退出登录 -->
 		<div class="menu1">
-			<a href="login.jsp"><span class="font">退出登录</span></a>
+			<span class="font">欢迎你，xxx</span>
 		</div>
 		<div class="clear"></div>
 	</div>

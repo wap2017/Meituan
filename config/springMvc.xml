@@ -22,7 +22,7 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 设置前缀 -->
-		<property name="prefix" value="/admin/"></property>
+		<property name="prefix" value="/"></property>
 		<!-- 设置后缀 -->
 		<property name="suffix" value=".jsp"></property>
 
