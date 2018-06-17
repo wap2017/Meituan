@@ -10,7 +10,13 @@
 	<context:component-scan base-package="com.meituan.controller.*"></context:component-scan>
 
 	<!-- 2,配置注解最新版的处理器映射器跟最新版的处理器适配器 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+              <constructor-arg value="UTF-8" />
+            </bean>
+        </mvc:message-converters>
+	</mvc:annotation-driven>
 
 	<!-- 3,配置视图解析器 -->
 	<bean
