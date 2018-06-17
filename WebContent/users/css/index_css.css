@@ -1,5 +1,12 @@
+footer{
+	position:absolute; 
+	bottom:0px; 
+	left:0px
+}
+
 a {
 	text-decoration: none;
+	color: #08c
 }
 
 #menu1 a:visited {
@@ -97,6 +104,13 @@ a {
 
 .font {
 	display: block;
+	padding-top: 40px;
+	padding-left: 100px;
+	color: #fff
+}
+
+.font1 {
+	display: none;
 	padding-top: 40px;
 	padding-left: 100px;
 	color: #fff
