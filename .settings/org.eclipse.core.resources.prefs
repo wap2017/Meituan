@@ -2,4 +2,3 @@ eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/jsp/1.jsp=UTF-8
 encoding//WebContent/sql/paotui.sql=UTF-8
 encoding//src/com/meituan/controller/user/UserController.java=UTF-8
-encoding//src/com/meituan/util/MD5Util.java=UTF-8

@@ -320,4 +320,12 @@
       o_finishTime = #{oFinishtime,jdbcType=TIMESTAMP}
     where o_id = #{oId,jdbcType=VARCHAR}
   </update>
+  <!--  添加的 -->
+<!--     double sumOrdersMoney(OrdersExample example);//求总营业额 -->
+	<select id="sumOrdersMoney" parameterType="com.meituan.pojo.OrdersExample" resultType="java.lang.Double" >
+    select sum(o_orderPrice) from paotui.orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    </select>
 </mapper>

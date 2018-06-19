@@ -27,4 +27,6 @@ public interface OrdersMapper {
     int updateByPrimaryKeySelective(Orders record);
 
     int updateByPrimaryKey(Orders record);
+    //----------------添加的------------------
+    Double sumOrdersMoney(OrdersExample example);//求营业额
 }
