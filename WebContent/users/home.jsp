@@ -30,6 +30,27 @@
 				$("#shopcartpage").hide();
 				$("#messagepage").toggle();
 			});
+			
+			$("#searchpic").click(function(){
+				
+				var bShopName = $.trim($('input[name=bShopName]').val());
+				alert(bShopName);
+				var data = {"bShopName":bShopName};
+				$.ajax({
+	                type : 'post',
+	                url : "../user/searchshop.action",
+					data:JSON.stringify(data),
+                    contentType:'application/json;charset=UTF-8',
+	                success : function(msg) {
+	                	if('success'==msg){
+                        	alert("传参成功");
+                        }else {
+                        	alert(msg);            
+                        }
+	                }
+	            });
+			});
+			
 
 		});
 </script>
@@ -76,9 +97,10 @@
 			</div>
 			<!-- 搜索部分 -->
 			<div id="search">
-				<span id="addre">当前位置：仲恺农业工程学院</span><a href="#">[修改当前地址]</a> <img
-					alt="搜索框图片" src="./images/glass.jpg" id="searchpic"> <input
-					type="text" name="shopName" placeholder="查找商家" id="searchinput" />
+				<span id="addre">当前位置：仲恺农业工程学院</span>
+				<a href="#">[修改当前地址]</a> 
+				<img alt="搜索框图片" src="./images/glass.jpg" id="searchpic" > 
+				<input type="text" name="bShopName" placeholder="查找商家" id="searchinput" />
 			</div>
 			<!-- 快捷搜索:看商家是否有分类 -->
 			<!--<div id="shortcut"></div>-->
@@ -274,7 +296,19 @@
 	</div>
 
 	<script type="text/javascript">
-		//判断是否登录
+		/* function click1(){
+			alert('点击了');
+			$.ajax({
+                type : 'post',
+                url : "../user/searchshop.action",
+                contentType:'application/json;charset=UTF-8',
+                data:JSON.stringify($.trim($('input[name=bShopName]').val())),
+                success : function(msg) {
+                    alert(msg);
+                }
+            });
+		}; */
+
 		
 	</script>
 
