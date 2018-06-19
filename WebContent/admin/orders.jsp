@@ -27,7 +27,7 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">美团后台管理系统</a>
+				</a> <a class="brand" href="#">快点慢吃后台管理系统</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 						<li class="dropdown"><a href="#" role="button"
@@ -239,7 +239,7 @@
 												td_address = $("<td style='text-align:center;vertical-align:middle;'>" + this.adEndid
 														+ "</td>");
 												let td_price=$("<td  style='text-align:center;vertical-align:middle;'>"+this.oOrderprice+"</td>");
-												let td_state=$("<td  style='text-align:center;vertical-align:middle;'>"+this.oShopstate+"</td>");
+												let td_state=$("<td  style='text-align:center;vertical-align:middle;'>"+this.oPaymentstate+"</td>");
 
 												$(tr).append.call($(tr),
 														td_oId,td_uId, td_bId,
