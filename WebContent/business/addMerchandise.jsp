@@ -5,6 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/putPhoto.js"></script>
+<script type="text/javascript">
+ 	function f(){
+ 		var msg = "<%=request.getAttribute("msg")%>";
+		var result=<%=request.getAttribute("msg") == null%>;
+		if(!result){
+			if(msg=="添加成功"){
+			var con=confirm("添加成功，是否继续添加"); 
+			if(con==true)
+				location.href="addMerchandise.jsp";
+			else
+				location.href="Merchandise.jsp";
+			}else{
+				alert(msg);
+				location.href="addMerchandise.jsp";
+			}
+ 		}
+ 	}
+ 	f();
+</script>
 </head>
 <body>
 	<jsp:include page="top.jsp"></jsp:include>
@@ -42,19 +61,21 @@
 			<h3>添加商品</h3>
 
 			<div class="add">
-				<form id="uploadAvatar" method="post" enctype="multipart/form-data"
-					action="/uploadAvatar">
+				<form id="uploadAvatar" method="post" enctype="multipart/form-data" action="../business/addmerchandise.action">
 					<div class="addsinple">
 						<div class="left">
-							商品名称<br /> <input type="text"><br /> 商品描述<br /> <input
-								type="text"><br /> 商品类型<br /> <select>
+						<label ></label>
+							商品名称<br /> <input type="text" name="shopName"><br /> 
+							商品描述<br /> <input type="text" name="describe"><br /> 
+							商品类型<br /> 
+							<select name="type">
 								<option selected="selected">正餐</option>
 								<option>夜宵</option>
 								<option>零食</option>
 								<option>生鲜</option>
-							</select><br /> 商品单价<br /> <input type="text"><br /> 商品库存<br />
-							<input type="text"><br />
-
+							</select><br /> 
+							商品单价<br /> <input type="text" name="price"><br /> 
+							商品库存<br /><input type="text" name="inventory"><br />
 						</div>
 						<div class="right">
 							<h5>添加图片</h5>
@@ -63,20 +84,17 @@
 									id="图片预览">
 							</div>
 							<input name="imgA" type="file" id="txtSrc" onChange="setImagePreview(this,'txtSrc','imgDiv','img');"><br/>
-							<span class="Putaway"><input type="checkbox" id="putaway">是否同时上架销售？</span>
+							<span class="Putaway"><input type="checkbox" name="putaway" value="1">是否同时上架销售？</span>
 						</div>
 						</div>
-						<p class="addButton">
-							<input type="button" value="继续添加"> 
-							<input type="submit" value="确定发布">
-						</p>
+							<input type="submit" class="addButton" value="确定发布" >
 				</form>
 			</div>
 		</div>
 	</div>
 
 	<jsp:include page="bottom.jsp"></jsp:include>
-	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/site.js"></script>
 </body>
