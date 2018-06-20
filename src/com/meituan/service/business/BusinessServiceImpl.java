@@ -6,16 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.meituan.mapper.BusinessMapper;
+import com.meituan.mapper.GoodsMapper;
 import com.meituan.pojo.Business;
 import com.meituan.pojo.BusinessExample;
-
 import com.meituan.pojo.BusinessExample.Criteria;
+import com.meituan.pojo.Goods;
 
 @Service("BusinessService")
 public class BusinessServiceImpl implements BusinessService {
 
 	@Autowired
 	private BusinessMapper businessMapper;
+	@Autowired
+	private GoodsMapper goodsMapper;
 
 	@Override
 	public int delBusiness(String bId) {
@@ -78,6 +81,14 @@ public class BusinessServiceImpl implements BusinessService {
 	@Override
 	public Business findBusiness(String bId) {
 		return businessMapper.selectByPrimaryKey(bId);
+	}
+	
+	//--------…Ãº“∂À-----------------------
+
+	@Override
+	public int insertGoods(Goods record) {
+		int i = goodsMapper.insertSelective(record);
+		return i;
 	}
 
 	
