@@ -26,20 +26,11 @@
 							<li>
 								<a href="addMerchandise.jsp"><i class="icon-plus"></i> 添加商品</a>
 							</li>
-							<li>
-								<a href="sale.jsp"><i class="icon-file"></i>销售总览</a>
-							</li>
-							<li>
-								<a href="evaluate.jsp"><i class="icon-envelope"></i>用户评价</a>
-							</li>
 							<li class="nav-header">
 								账户管理
 							</li>
 							<li>
 								<a href="account.jsp"><i class="icon-user"></i> 账户信息</a>
-							</li>
-							<li>
-								<a href="settings.jsp"><i class="icon-cog"></i> 设置</a>
 							</li>
 							<li class="divider">
 							</li>
@@ -65,11 +56,11 @@
 						</ul>
 					</div>
 			<!-- ------------订单部分一致的地方------------------- -->
-				<div class="allButton">
-					<input type="button" value="全部接单" id="allTake">
-					<input type="button" value="全部不接单" id="allNotTake">
+				<div class="takeButton">
+					<input type="button" value="全部不接单" onclick="allNotTake()">
+					<input type="button" value="全部接单" onclick="allTake()">
+					<hr>
 				</div>
-				<hr>
 				<div class="order">
 <!-- 					订单号  收货人  商品 总价  备注信息  收货地址  下单时间  支付状态  操作 -->
 					<div class="orderLeft">
@@ -85,12 +76,12 @@
 					<span>支付状态:</span><br>
 					</div>
 					<input type="button" value="接单" class="take">
-				<hr>
 				</div>
+				<hr>
 			</div>
 		</div>
 	<jsp:include page="bottom.jsp"></jsp:include>
-	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/time.js"></script>
 	<script type="text/javascript">
 	$(function() {
@@ -127,12 +118,12 @@
 							let span_oid=$("<span>收货人："+this.address.adName+"</span><br>");
 							let span_address=$("<span>收货地址:"+this.address.adProvince+this.address.adCity+this.address.adAddress+"</span><br>");
 							let span_time=$("<span>下单时间:"+formatDate(new Date(this.orders.oOpentime))+"</span><br>");
-							let span_state=$("<span>联系电话:</span><br>");
+							let span_state=$("<span>联系电话:"+this.address.adPhone+"</span><br>");
 							$(orderRight).append.call($(orderRight),
 									span_oid,span_address, span_time,
 									span_state);
-							let button=$("<div class='takeButton'><input type='button' value='不接单' class='notTake'>"
-							+"<input type='button' value='接单' class='take'><div><hr>");
+							let button=$("<div class='takeButton'><input type='button' value='不接单' class='notTake' oId="+this.orders.oId+" onclick='notTake(this)'>"
+							+"<input type='button' value='接单' class='take' oid="+this.orders.oId+" onclick='take(this)'><div><hr>");
 							$(".order").append(orderLeft,orderRight,button);
 						})
 				},
@@ -141,8 +132,19 @@
 				}
 			});
 		}
+	function notTake(th){
+		window.location.href="../order/notPick.action?oId="+th.getAttribute("oid");
+	}
+	function take(th){
+		window.location.href="../order/pick.action?oId="+th.getAttribute("oid");
+	}
+	function allTake(){
+		window.location.href="../order/allTake.action"
+	}
+	function allNotTake(){
+		window.location.href="../order/allNotTake.action"
+	}
 	</script>
-	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/site.js"></script>
 </body>

@@ -33,36 +33,14 @@
 							<li>
 								<a href="addMerchandise.jsp"><i class="icon-plus"></i> 添加商品</a>
 							</li>
-							<li>
-								<a href="sale.jsp"><i class="icon-file"></i>销售总览</a>
-							</li>
-							<li>
-								<a href="evaluate.jsp"><i class="icon-envelope"></i>用户评价</a>
-							</li>
 							<li class="nav-header">
 								账户管理
 							</li>
 							<li>
 								<a href="account.jsp"><i class="icon-user"></i> 账户信息</a>
 							</li>
-							<li>
-								<a href="settings.jsp"><i class="icon-cog"></i> 设置</a>
-							</li>
 							<li class="divider">
 							</li>
-							<!-- 暂时没有用 -->
-							<li>
-								<a href="help.htm"><i class="icon-info-sign"></i> Help</a>
-							</li>
-<!-- 							<li class="nav-header"> -->
-<!-- 								Bonus Templates -->
-<!-- 							</li> -->
-<!-- 							<li> -->
-<!-- 								<a href="gallery.htm"><i class="icon-picture"></i> Gallery</a> -->
-<!-- 							</li> -->
-<!-- 							<li> -->
-<!-- 								<a href="blank.htm"><i class="icon-stop"></i> Blank Slate</a> -->
-<!-- 							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -86,50 +64,7 @@
 							</li>
 						</ul>
 					</div>
-					<h2>
-						热销中的商品
-					</h2>
-					<table class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>
-									商品图片
-								</th>
-								<th>
-									商品名
-								</th>
-								<th>
-									月销量
-								</th>
-								<th>
-									好评率
-								</th>
-								<th>
-									管理
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									Nike.com Redesign
-								</td>
-								<td>
-									Monsters Inc
-								</td>
-								<td>
-									New Task
-								</td>
-								<td>
-									4 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							
-						</tbody>
-					</table>
+					
 				</div>
 			</div>
 	<jsp:include page="bottom.jsp"></jsp:include>
@@ -142,7 +77,7 @@
 	function find1() {
 		$.ajax({
 				type:"get",
-				url:"${pageContext.request.contextPath }/order/findOrdersCount.action?bId=b1",
+				url:"${pageContext.request.contextPath }/order/findOrdersCount.action",
 				async: false,
 				contentType:"application/json;charset=utf-8",
 				data:{},
@@ -159,7 +94,7 @@
 	function find2() {
 		$.ajax({
 				type:"get",
-				url:"${pageContext.request.contextPath }/order/findOrdersMoney.action?bId=b1",
+				url:"${pageContext.request.contextPath }/order/findOrdersMoney.action",
 				async: false,
 				contentType:"application/json;charset=utf-8",
 				data:{},
@@ -174,7 +109,7 @@
 			});
 		}
 	</script>
-		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
 	</body>

@@ -46,7 +46,7 @@
     left: 35%;
     top: 25%;
     width: 30%;
-    height: 50%;
+    height: 60%;
     background-color: whitesmoke;
     text-align: center;
 }
@@ -85,14 +85,13 @@
     color: #fff;
     font-size: 19px;
 }
-.dataDiv{
-/* 	display: none; */
+#dataDiv{
+	display: none;
     overflow: auto;
-	zoom: 1;
+    zoom: 1;
     position: absolute;
-    left: 8%;
+    left: 18%;
     top: 15%;
-    width: 85%;
     height: 78%;
     background-color: whitesmoke;
 }
@@ -116,9 +115,9 @@
 	display: table-cell;
 	border-right: 1px solid #eee;
 }
-.dataDiv .submit{
+#dataDiv .submit{
 	width: 155px;
-    height: 30px;
+    height: 40px;
     margin-bottom: 15px;
     margin-top: 30px;
     background-color: #5AAA0A;
@@ -126,7 +125,66 @@
     font-size: 19px;
     margin-left: 45%;
 }
-.dataDiv #canel{
+#dataDiv #canel{
 	margin-top: 20px;
-	margin-left:80%;
+    margin-left: 80%;
+    margin-bottom: 20px;
+    width: 70px;
+}
+.success{
+	margin-left: 45%;
+    margin-top: 35%;
+}
+
+.success a{    
+	color: floralwhite;
+    font-size: 30px;
+}
+.success a:hover {
+	color:yellow;
+}
+
+/* 完善信息页面 */
+.perfect{
+	width: 50%;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+.perfect .left{
+	float:left;
+    width: 50%;
+}
+.perfect .right{
+	float: right;
+	height: 319px;
+}
+.perfect input{
+	text-align:-webkit-right;
+}
+.perfect .title{
+	text-align: center;
+	margin-bottom: 60px;
+}
+.perfect span{
+	line-height: 50px;
+    font-size: 20px;
+    font-family: cursive;
+}
+.perfect .infoSubmit{
+	width: 135px;
+    height: 30px;
+    margin-bottom: 15px;
+    margin-top: 50px;
+    background-color: cadetblue;
+    color: #fff;
+    font-size: 19px;
+    text-align: center;
+    margin-left: 40%;
+}
+.perfect .infoCanel{
+	margin-left: 70%;
+    margin-top: 20px;
+}
+.perfect textarea{
+	margin-top: 15px;
 }

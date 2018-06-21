@@ -10,6 +10,7 @@
  		var msg = "<%=request.getAttribute("msg")%>";
 		var result=<%=request.getAttribute("msg") == null%>;
 		if(!result){
+			alert(msg);
 			if(msg=="添加成功"){
 			var con=confirm("添加成功，是否继续添加"); 
 			if(con==true)
@@ -20,9 +21,9 @@
 				alert(msg);
 				location.href="addMerchandise.jsp";
 			}
- 		}
+			}
  	}
- 	f();
+ f();
 </script>
 </head>
 <body>
@@ -39,12 +40,8 @@
 					</li>
 					<li class="active"><a href="addMerchandise.jsp"><i
 							class="icon-white icon-plus"></i> 添加商品</a></li>
-					<li><a href="sale.jsp"><i class="icon-file"></i>销售总览</a></li>
-					<li><a href="evaluate.jsp"><i class="icon-envelope"></i>用户评价</a>
-					</li>
 					<li class="nav-header">账户管理</li>
 					<li><a href="account.jsp"><i class="icon-user"></i> 账户信息</a></li>
-					<li><a href="settings.jsp"><i class="icon-cog"></i> 设置</a></li>
 					<li class="divider"></li>
 				</ul>
 			</div>

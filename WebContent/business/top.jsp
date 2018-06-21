@@ -12,6 +12,13 @@
 		<link href="css/site.css" rel="stylesheet">
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
+	<script type="text/javascript">
+	function exit(){
+		var con=confirm("确认退出？"); 
+		if(con==true)
+			window.location.href="../business/quit.action";
+	}
+	</script>
 	<body>
 		<div class="container">
 			<div class="navbar">
@@ -55,16 +62,13 @@
 										</li>
 									</ul>
 								</li>
-								<li>
-									<a href="sale.jsp">销售总览</a>
-								</li>
 							</ul>
 						<ul class="nav pull-right">
 								<li>
 									<a href="account.jsp">账号管理</a>
 								</li>
 								<li>
-									<a href="login.jsp">退出</a>
+									<input type="button" id="layout" value="退出" onclick="exit()">
 								</li>
 							</ul>
 						</div>

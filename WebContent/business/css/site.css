@@ -9,7 +9,12 @@ body {
 h1 {
 	padding-bottom: 0.2em;
 }
-
+#layout{
+	background: none;
+    border: none;
+    margin-top: 9px;
+    color: currentColor;
+}
 .meta {
 	color: #999;
 	font-size: .9em;
@@ -171,13 +176,15 @@ h1 {
 	float: right;
 }
 
-
 .Putaway {
 	margin-down: 100px;
 }
 
 .addButton {
-	text-align: center;
+	height: 30px;
+	color: cornsilk;
+	background-color: mediumseagreen;
+	margin-left: 50%;
 }
 
 .sell {
@@ -191,18 +198,16 @@ h1 {
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-	
 }
 
-
-.sellsum{
+.sellsum {
 	overflow: auto;
 	zoom: 1;
-	text-align:center;
+	text-align: center;
 	margin-top: 27px;
-    margin-bottom: 27px;
-
+	margin-bottom: 27px;
 }
+
 .sellsum .left {
 	margin-left: 25%;
 	float: left;
@@ -211,18 +216,18 @@ h1 {
 .sellsum .right {
 	margin-left: 40%;
 }
-.sellsum .count{
+
+.sellsum .count {
 	display: -webkit-inline-box;
-    overflow: auto;
-    zoom: 1;
-    font-size: 1.70em;
-    font-weight: bold;
-    height: 25px;
-    margin-bottom: 1px;
-	
+	overflow: auto;
+	zoom: 1;
+	font-size: 1.70em;
+	font-weight: bold;
+	height: 25px;
+	margin-bottom: 1px;
 }
 
-.sellsearch{
+.sellsearch {
 	margin-left: 35%;
 }
 /* blank slate */
@@ -273,49 +278,138 @@ h1 {
 	bottom: 0;
 	left: 20px;
 }
-.allButton{
-	margin-left: 80%;
-    width: 20%;
+
+.order {
+	margin-top: 20px;
+	font-size: 20px;
+	font-family: cursive;
+	line-height: 30px;
 }
 
-#allTake{
+.order .orderLeft {
 	float: left;
-	margin-right: 10px;
+	margin-right: 3%;
+	margin-left: 35px;
+	width: 400px;
 }
-.order{
+
+.order .orderRight {
+	height: 200px;
+}
+
+.order #remark {
+	color: red;
+}
+
+.takeButton {
+	text-align: -webkit-right;
+}
+
+.takeButton .take {
 	margin-top: 20px;
+	width: 120px;
+	height: 30px;
+	color: cornsilk;
+	background-color: mediumseagreen;
+}
+
+.takeButton .notTake {
+	margin-top: 20px;
+	width: 120px;
+	height: 30px;
+	color: cornsilk;
+	background-color: darkgray;
+}
+
+.business .logoPho {height ="80dp";width ="80dp";
+	border-radius: 50px;
+	margin-left: 20px;
+}
+
+.businessInfos .name {
+	font-size: 3em;
+	font-family: cursive;
+	line-height: 30px;
+	/* float: right; */
+	display: block;
+	padding-top: 10px;
+}
+
+.businessInfos .businessInfo {
+	font-size: 2em;
+	font-family: cursive;
+	line-height: 50px;
+	margin-top: 20px;
+	margin-left: 20px;
+	letter-spacing: 8px;
+}
+
+.businessInfos .logoPho {
+	width: 50px;
+	height: 46px;
+	border-radius: 10px;
+	float: left;
+}
+
+.businessInfo .otherPho {
+	width: 200px;
+	height: 200px;
+	margin-bottom: 20px;
+	padding-left: 20px;
+	margin-left: 200px;
+}
+
+.modify {
+	margin-bottom: 10px;
+	margin-left: 90%;
+}
+
+.modify #modifyButton {
+	height: 30px;
+	color: cornsilk;
+	background-color: darkgray;
+}
+
+.modifyDiv1 {
+	display: none;
+	overflow: auto;
+    zoom: 1;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    margin-top: -200px;}
+
+.modifyDiv {
+	position: absolute;
+    width: 60%;
+    height: 30%;
+    background-color: floralwhite;
+    margin-left: 20%;
+    margin-top: 20%;
+}
+
+.modifyDiv .left {
+	float: left;
+    margin-left: 30px;
+}
+.modifyDiv .right {
+	margin-top: 30px;
+    margin-left: 30px;
+}
+.modifyDiv span {
+    line-height: 50px;
     font-size: 20px;
     font-family: cursive;
-    line-height: 30px;
 }
-.order .orderLeft{
-	float: left;
-    margin-right: 3%;
-    margin-left: 35px;
-    width: 400px;
+.modifyButton{
+	margin-top: 50px;
+    margin-left: 70%;
 }
-.order .orderRight{
-    height:200px;
+.modifyButton input{
+	height: 30px;
 }
-
-.order #remark{
-	 color: red;
+.otherP{
+	width: 50px;
+	height: 46px;
+	border-radius: 10px;
 }
-.takeButton{
-	text-align:-webkit-right;
-}
-.takeButton .take{
-    margin-top: 20px;
-    width: 120px;
-    height: 30px;
-    color: cornsilk;
-    background-color: mediumseagreen;
-}
-.takeButton .notTake{
-	margin-top: 20px;
-    width: 120px;
-    height: 30px;
-    color: cornsilk;
-    background-color: darkgray;
-}
-

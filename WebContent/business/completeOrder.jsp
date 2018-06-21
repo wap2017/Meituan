@@ -26,20 +26,11 @@
 							<li>
 								<a href="addMerchandise.jsp"><i class="icon-plus"></i> 添加商品</a>
 							</li>
-							<li>
-								<a href="sale.jsp"><i class="icon-file"></i>销售总览</a>
-							</li>
-							<li>
-								<a href="evaluate.jsp"><i class="icon-envelope"></i>用户评价</a>
-							</li>
 							<li class="nav-header">
 								账户管理
 							</li>
 							<li>
 								<a href="account.jsp"><i class="icon-user"></i> 账户信息</a>
-							</li>
-							<li>
-								<a href="settings.jsp"><i class="icon-cog"></i> 设置</a>
 							</li>
 							<li class="divider">
 							</li>
@@ -123,7 +114,7 @@
 							let span_oid=$("<span>收货人："+this.address.adName+"</span><br>");
 							let span_address=$("<span>收货地址:"+this.address.adProvince+this.address.adCity+this.address.adAddress+"</span><br>");
 							let span_time=$("<span>下单时间:"+formatDate(new Date(this.orders.oOpentime))+"</span><br>");
-							let span_state=$("<span>联系电话:</span><br>");
+							let span_state=$("<span>联系电话:"+this.address.adPhone+"</span><br>");
 							$(orderRight).append.call($(orderRight),
 									span_oid,span_address, span_time,
 									span_state);
@@ -136,7 +127,7 @@
 			});
 		}
 	</script>
-	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/site.js"></script>
 </body>
