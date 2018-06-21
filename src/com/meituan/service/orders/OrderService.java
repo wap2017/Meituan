@@ -20,9 +20,16 @@ public interface OrderService {
 		List<Orders> findWaitingOrder(String bId);//查待接单的订单
 		List<Orders> findProceedOrder(String bId);//查待进行 中的订单
 		List<Orders> findCompleteOrder(String bId);//查待已完成的订单
-		List<Orders> findCancelOrder(String bId);//查待取消的订单
+		List<Orders> findCancelOrder(String bId);//查已取消的订单
+		List<Orders> findAllOrder(String bId);//查所有的订单
 		
 		List<Orderitem> findOrderItem(String oId);//查对应订单的商品详情
 		Goods findGoodName(String gId);//查对应gid的商品名
 		Address findAddress(String adId);//查收货地址
+		
+		int updateByPrimaryKeySelective(Orders record);//按oId修改
+		
+		int updateByPrimaryKeySelective(Goods record);//根据gId修改商品
+		
+		int deleteByPrimaryKey(String gId);//删除商品
 }

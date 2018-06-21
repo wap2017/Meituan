@@ -11,6 +11,7 @@ import com.meituan.pojo.Business;
 import com.meituan.pojo.BusinessExample;
 import com.meituan.pojo.BusinessExample.Criteria;
 import com.meituan.pojo.Goods;
+import com.meituan.pojo.GoodsExample;
 
 @Service("BusinessService")
 public class BusinessServiceImpl implements BusinessService {
@@ -76,6 +77,7 @@ public class BusinessServiceImpl implements BusinessService {
 		Criteria cc = example.createCriteria();
 		cc.andBIdEqualTo(business.getbId());
 		return businessMapper.updateByExample(business, example);
+	
 	}
 
 	@Override
@@ -90,6 +92,32 @@ public class BusinessServiceImpl implements BusinessService {
 		int i = goodsMapper.insertSelective(record);
 		return i;
 	}
+
+	@Override
+	public int insertSelective(Business record) {
+		return businessMapper.insertSelective(record);
+	}
+
+	@Override
+	public Business selectByPrimaryKey(String bId) {
+		return businessMapper.selectByPrimaryKey(bId);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(Business record) {
+		
+		return businessMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public List<Goods> selectByExample(String bId,int i) {
+		GoodsExample example = new GoodsExample();
+		GoodsExample.Criteria cr = example.createCriteria();
+		cr.andBIdEqualTo(bId);
+		cr.andGSaleEqualTo(i);
+		return goodsMapper.selectByExample(example);
+	}
+
 
 	
 

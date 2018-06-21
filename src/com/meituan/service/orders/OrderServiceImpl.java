@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -145,7 +147,13 @@ public class OrderServiceImpl implements OrderService {
 		cr.andOPaymentstateEqualTo("ÒÑÈ¡Ïû");
 		return orderMapper.selectByExample(example);
 	}
-
+	@Override
+	public List<Orders> findAllOrder(String bId) {
+		OrdersExample example = new OrdersExample();
+		Criteria cr = example.createCriteria();
+		cr.andBIdEqualTo(bId);
+		return orderMapper.selectByExample(example);
+	}
 
 	@Override
 	public List<Orderitem> findOrderItem(String oId) {
@@ -167,4 +175,25 @@ public class OrderServiceImpl implements OrderService {
 	public Address findAddress(String adId) {
 		return addressMapper.selectByPrimaryKey(adId);
 	}
+
+
+	@Override
+	public int updateByPrimaryKeySelective(Orders record) {
+		return orderMapper.updateByPrimaryKeySelective(record);
+	}
+
+
+	@Override
+	public int updateByPrimaryKeySelective(Goods record) {
+		return goodsMapper.updateByPrimaryKeySelective(record);
+	}
+
+
+	@Override
+	public int deleteByPrimaryKey(String gId) {
+		return goodsMapper.deleteByPrimaryKey(gId);
+	}
+
+
+	
 }
